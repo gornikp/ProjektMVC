@@ -4,6 +4,7 @@ Formularze do zrealizowania:
 USER:
  1. edycja przesyki/ustawienia dostawy
  2. koszyk - kompletowanie (dodawanie i usuwanie produktów, ich ilosci)
+
 ADMIN:
  3. wstawianie nowych produktów przez administratora
  4. wyswietlanie listy produktów (tzn.: edytuj, usun, i gdzies na gorze - dodaj nowy)
