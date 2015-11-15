@@ -15,9 +15,6 @@ namespace WypasionaKsiegarniaMVC.Models
         [Display(Name = "Title")]
         public String Title { get; set; }
 
-        [Display(Name = "Author")]
-        public ICollection <String> Author { get; set; }
-
         [Display(Name = "Language")]  //lel spell checker was really useful for the first time here :D
         public String Language { get; set; }
 
@@ -45,7 +42,7 @@ namespace WypasionaKsiegarniaMVC.Models
         public ICollection <Uri> Pictures { get; set; }//
                                                        // Nie jestem pewnien czy tak jest dobrze czy nie trzeba tworzyć nowej Klasy "Obrazki" "autorzy" "pliki" itd.
         [Display(Name = "Files")]                      //
-        public ICollection<Uri> Files { get; set; }    //
+        public ICollection <Uri> Files { get; set; }    //
 
         [Display(Name = "Featured")]
         public bool Featured { get; set; }
@@ -58,5 +55,7 @@ namespace WypasionaKsiegarniaMVC.Models
 
         [Display(Name = "Description")]
         public string Description { get; set; }
+
+        public virtual ICollection<Author> Authors { get; set; }
     }
 }
