@@ -16,9 +16,9 @@ namespace WypasionaKsiegarniaMVC.Models
         public String Title { get; set; }
 
         [Display(Name = "Author")]
-        public String Author { get; set; }
+        public ICollection <String> Author { get; set; }
 
-        [Display(Name = "Lanuage")]
+        [Display(Name = "Language")]  //lel spell checker was really useful for the first time here :D
         public String Language { get; set; }
 
         [Display(Name = "Price")]
@@ -37,5 +37,26 @@ namespace WypasionaKsiegarniaMVC.Models
 
         [Display(Name = "Format")]
         public String Format { get; set; }
+
+        [Display(Name = "Amount")]
+        public String StockAmount { get; set; }
+
+        [Display(Name = "Pictures")]
+        public ICollection <Uri> Pictures { get; set; }//
+                                                       // Nie jestem pewnien czy tak jest dobrze czy nie trzeba tworzyć nowej Klasy "Obrazki" "autorzy" "pliki" itd.
+        [Display(Name = "Files")]                      //
+        public ICollection<Uri> Files { get; set; }    //
+
+        [Display(Name = "Featured")]
+        public bool Featured { get; set; }
+
+        [Display(Name = "Discount")]
+        public int Discount { get; set; }
+
+        [Display(Name = "Hidden")]
+        public bool Hidden { get; set; }
+
+        [Display(Name = "Description")]
+        public string Description { get; set; }
     }
 }
