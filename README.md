@@ -33,3 +33,5 @@ USTAWIENIA PRZESYLKI:
  - kraj
  - adres
  - dane odbiorcy
+
+Adnotacja to projektu - projekt jest na 45 punktów max. Podliczyem, że jak zrobimy wszystkie funkcjonalnoci to bedzi 83 punkty. Czyli wszystkiego robić nie trzeba (Hura! :D ), ale tak trzeba to zrobić dobrze, mimo że to tylko pan K. :D
