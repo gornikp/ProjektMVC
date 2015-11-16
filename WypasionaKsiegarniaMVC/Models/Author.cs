@@ -14,7 +14,7 @@ namespace WypasionaKsiegarniaMVC.Models
 
         [Display(Name = "Surname")]
         public ICollection<String> NameSurname { get; set; }
-
+        [Key]
         public virtual ICollection<Product> Products { get; set; } 
     }
 }
