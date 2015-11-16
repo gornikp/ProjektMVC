@@ -14,9 +14,9 @@ namespace WypasionaKsiegarniaMVC.Models
                          * 2. Stworzenie wersji bazy add-migration nazwa_migracji
                          * 3. Naniesie zmian na baze: update-database
                          */
-    class ProductContext : DbContext
+    class Product_DbContext : DbContext
     {
-        public ProductContext() : base("MyCS") { }
+        public Product_DbContext() : base("MyCS") { }
         public DbSet<Product> Products { get; set; }
         public DbSet<Author> Authors { get; set; }
 
