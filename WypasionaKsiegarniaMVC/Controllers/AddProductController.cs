@@ -28,6 +28,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
                 p.StockAmount = "10";
                 p.Title = "Back And Again.";
                 p.Year = 2013;
+                products.Add(p);
             }
             return View(products.ToList());
         }
