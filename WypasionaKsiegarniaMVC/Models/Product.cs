@@ -44,7 +44,6 @@ namespace WypasionaKsiegarniaMVC.Models
         public String StockAmount { get; set; }
 
         [Display(Name = "Pictures")]
-        [Required]
         public ICollection <Uri> Pictures { get; set; }//
                                                        // Nie jestem pewnien czy tak jest dobrze czy nie trzeba tworzyć nowej Klasy "Obrazki" "autorzy" "pliki" itd.
         [Display(Name = "Files")]                      //

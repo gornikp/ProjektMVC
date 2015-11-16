@@ -253,6 +253,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\AddProduct\Create.cshtml" />
+    <Content Include="Views\AddProduct\Edit.cshtml" />
+    <Content Include="Views\AddProduct\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

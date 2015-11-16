@@ -9,9 +9,26 @@ namespace WypasionaKsiegarniaMVC.Controllers
 {
     public class AddProductController : Controller
     {
+        private List<Product> products = new List<Product>();
+
         // GET: AddProduct
-        public ActionResult Index()
+        public ActionResult List()
         {
+            if(products.Count == 0)
+            {
+                Product p = new Product();
+                p.Description = "Nice book, you should read.";
+                p.Discount = 0;
+                p.Format = "normal";
+                p.ISBN = 12312312340;
+                p.Language = "english";
+                p.PageAmount = 1000;
+                p.Price = 56.50;
+                p.Publisher = "Book4You";
+                p.StockAmount = "10";
+                p.Title = "Back And Again.";
+                p.Year = 2013;
+            }
             return View();
         }
 
@@ -33,13 +50,14 @@ namespace WypasionaKsiegarniaMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                products.Add(product);
                 ViewBag.Message = "Product saved.";
-                return View(product);
+                return RedirectToAction("List");
             }
             else
             {
-                ViewBag.Message = "Error";
-                return View();
+                ViewBag.Message = "Error: " + ModelState.Values;
+                return View(product);
             }
         }
 
@@ -51,18 +69,13 @@ namespace WypasionaKsiegarniaMVC.Controllers
 
         // POST: AddProduct/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Product product)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
-            catch
-            {
-                return View();
-            }
+            return View(product);
         }
 
         // GET: AddProduct/Delete/5
@@ -73,18 +86,10 @@ namespace WypasionaKsiegarniaMVC.Controllers
 
         // POST: AddProduct/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Product product)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            products.Remove(product);
+            return RedirectToAction("List");
         }
     }
 }
