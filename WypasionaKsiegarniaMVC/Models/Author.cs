@@ -9,6 +9,7 @@ namespace WypasionaKsiegarniaMVC.Models
 {
     public class Author
     {
+        [Key]
         public int AuthorsID { get; set; }
 
         [Display(Name = "Name")]

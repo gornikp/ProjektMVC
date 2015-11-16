@@ -8,7 +8,8 @@ namespace WypasionaKsiegarniaMVC.Models
 {
     public class Product
     {
-        [Key]
+        public long ProductID { get; set; }
+
         [Display(Name = "ISBN")]
         [Range(1000000000, 9999999999999, ErrorMessage = "Wrong ISBN number!")]
         public long ISBN { get; set; }
@@ -57,11 +58,7 @@ namespace WypasionaKsiegarniaMVC.Models
         [Display(Name = "Description")]
         [Required]
         public string Description { get; set; }
-
-        public int AuthorsID { get; set; }
-
         public int FileID { get; set; }
-
         public int PictureID { get; set; }
 
         public virtual ICollection<Picture> Pictures { get; set; }

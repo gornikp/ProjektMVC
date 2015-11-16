@@ -19,6 +19,8 @@ namespace WypasionaKsiegarniaMVC.Models
         public Product_DbContext() : base("MyCS") { }
         public DbSet<Product> Products { get; set; }
         public DbSet<Author> Authors { get; set; }
+        public DbSet<File> Files { get; set; }
+        public DbSet<Picture> Picturess { get; set; }
 
     }
 }

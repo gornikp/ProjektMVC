@@ -13,7 +13,7 @@ namespace WypasionaKsiegarniaMVC.Models
         [Display(Name = "Files")]
         public Uri Address { get; set; }
 
-        public int ISBN { get; set; }
+        public int ProductID { get; set; }
 
         public virtual Product Product { get; set; }
     }
