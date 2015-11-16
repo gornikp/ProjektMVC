@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace WypasionaKsiegarniaMVC.Models
 {
-    public class Picture
+    public class File
     {
-        public int PictureID { get; set; }
-        [Display(Name = "Address")]
+        public int FileID { get; set; }
+        [Display(Name = "Files")]
         public Uri Address { get; set; }
 
+        public int ISBN { get; set; }
 
         public virtual Product Product { get; set; }
     }

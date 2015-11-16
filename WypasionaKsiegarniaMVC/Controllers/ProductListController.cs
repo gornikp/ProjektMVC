@@ -18,12 +18,12 @@ namespace WypasionaKsiegarniaMVC.Controllers
             Product e = new Product();
             p.ISBN = 9394969399599;
             p.Title = "Eloszka nad wodą";
-            p.StockAmount = "99";
+            p.StockAmount = 99;
             p.Price = 80;
             Products.Add(p);
             e.ISBN = 1324364399566;
             e.Title = "Eloszka w niebie";
-            e.StockAmount = "23";
+            e.StockAmount = 23;
             e.Price = 50;
             Products.Add(e);
             ViewBag.listProducts = Products;

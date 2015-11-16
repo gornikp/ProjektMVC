@@ -41,14 +41,9 @@ namespace WypasionaKsiegarniaMVC.Models
         public String Format { get; set; }
 
         [Display(Name = "Amount")]
+        [Range(0, 100000, ErrorMessage = "Invalid number of pages!")]
         [Required]
-        public String StockAmount { get; set; }
-
-        [Display(Name = "Pictures")]
-        public ICollection <Uri> Pictures { get; set; }//
-                                                       // Nie jestem pewnien czy tak jest dobrze czy nie trzeba tworzyć nowej Klasy "Obrazki" "autorzy" "pliki" itd.
-        [Display(Name = "Files")]                      //
-        public ICollection <Uri> Files { get; set; }    //
+        public int StockAmount { get; set; }
 
         [Display(Name = "Featured")]
         public bool Featured { get; set; }
@@ -62,6 +57,17 @@ namespace WypasionaKsiegarniaMVC.Models
         [Display(Name = "Description")]
         [Required]
         public string Description { get; set; }
+
+        public int AuthorsID { get; set; }
+
+        public int FileID { get; set; }
+
+        public int PictureID { get; set; }
+
+        public virtual ICollection<Picture> Pictures { get; set; }
+
+        public virtual ICollection<File> Files { get; set; }
+
 
         public virtual ICollection<Author> Authors { get; set; }
     }

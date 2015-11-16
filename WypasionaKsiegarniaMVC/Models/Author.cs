@@ -9,12 +9,14 @@ namespace WypasionaKsiegarniaMVC.Models
 {
     public class Author
     {
+        public int AuthorsID { get; set; }
+
         [Display(Name = "Name")]
-        public ICollection<String> Name { get; set; }
+        public String Name { get; set; }
 
         [Display(Name = "Surname")]
-        public ICollection<String> NameSurname { get; set; }
-        [Key]
+        public String NameSurname { get; set; }
+
         public virtual ICollection<Product> Products { get; set; } 
     }
 }
