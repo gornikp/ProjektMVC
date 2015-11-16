@@ -29,7 +29,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
                 p.Title = "Back And Again.";
                 p.Year = 2013;
             }
-            return View();
+            return View(products.ToList());
         }
 
         // GET: AddProduct/Details/5
