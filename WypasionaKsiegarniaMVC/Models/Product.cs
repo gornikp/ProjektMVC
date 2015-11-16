@@ -13,19 +13,22 @@ namespace WypasionaKsiegarniaMVC.Models
         public long ISBN { get; set; }
 
         [Display(Name = "Title")]
+        [Required]
         public String Title { get; set; }
 
-        [Display(Name = "Language")]  //lel spell checker was really useful for the first time here :D
+        [Display(Name = "Language")]
+        [Required]
         public String Language { get; set; }
 
         [Display(Name = "Price")]
         public Double Price { get; set; }
 
         [Display(Name = "Year")]
-        [Range(1, 2015, ErrorMessage = "Invalid Date!")]
+        [Range(1500, 2015, ErrorMessage = "Invalid Date!")]
         public int Year { get; set; }
 
         [Display(Name = "Publisher")]
+        [Required]
         public String Publisher { get; set; }
 
         [Display(Name = "Page amount")]
@@ -33,12 +36,15 @@ namespace WypasionaKsiegarniaMVC.Models
         public int PageAmount { get; set; }
 
         [Display(Name = "Format")]
+        [Required]
         public String Format { get; set; }
 
         [Display(Name = "Amount")]
+        [Required]
         public String StockAmount { get; set; }
 
         [Display(Name = "Pictures")]
+        [Required]
         public ICollection <Uri> Pictures { get; set; }//
                                                        // Nie jestem pewnien czy tak jest dobrze czy nie trzeba tworzyć nowej Klasy "Obrazki" "autorzy" "pliki" itd.
         [Display(Name = "Files")]                      //
@@ -54,6 +60,7 @@ namespace WypasionaKsiegarniaMVC.Models
         public bool Hidden { get; set; }
 
         [Display(Name = "Description")]
+        [Required]
         public string Description { get; set; }
 
         public virtual ICollection<Author> Authors { get; set; }
