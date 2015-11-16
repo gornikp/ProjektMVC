@@ -21,7 +21,7 @@ namespace WypasionaKsiegarniaMVC.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("MyCS", throwIfV1Schema: false)
         {
         }
 
