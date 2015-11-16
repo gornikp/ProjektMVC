@@ -18,6 +18,12 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Pictures[0])
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pictures[1])
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Language)
         </th>
         <th>
@@ -61,6 +67,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.Pictures[0])
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.Pictures[1])
+        </th>
         <td>
             @Html.DisplayFor(modelItem => item.Language)
         </td>
