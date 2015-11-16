@@ -40,8 +40,9 @@ namespace WypasionaKsiegarniaMVC.Models
         public String Format { get; set; }
 
         [Display(Name = "Amount")]
+        [Range(0, 100000, ErrorMessage = "Invalid number of pages!")]
         [Required]
-        public String StockAmount { get; set; }
+        public int StockAmount { get; set; }
 
         [Display(Name = "Pictures")]
         public ICollection <Uri> Pictures { get; set; }//
