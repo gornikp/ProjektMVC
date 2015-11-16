@@ -54,15 +54,15 @@ namespace WypasionaKsiegarniaMVC
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+            appId: "642792262529790",
+            appSecret: "17e366e43727bf4ba18724d2b2a6078f");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "68099196006-5k5adqkpfkadgdae3rf003orapgcfhpk.apps.googleusercontent.com",
+                ClientSecret = "Nq9fG899lQ_i6dToI4-VOGqv"
+            });
         }
     }
 }
