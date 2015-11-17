@@ -274,8 +274,6 @@
     <Content Include="Views\AdminPanel\List.cshtml" />
     <Content Include="Views\ProductList\Index.cshtml" />
     <Content Include="Views\ProductList\Listed.cshtml" />
-    <Content Include="Views\ShoppingCart\Index.cshtml" />
-    <Content Include="Views\ShoppingCart\Cart.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
@@ -323,7 +321,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>31035</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
