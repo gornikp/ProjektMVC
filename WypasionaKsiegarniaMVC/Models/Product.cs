@@ -8,7 +8,7 @@ namespace WypasionaKsiegarniaMVC.Models
 {
     public class Product
     {
-        public long ProductID { get; set; }
+        public int ProductID { get; set; }
 
         [Display(Name = "ISBN")]
         [Range(1000000000, 9999999999999, ErrorMessage = "Wrong ISBN number!")]
