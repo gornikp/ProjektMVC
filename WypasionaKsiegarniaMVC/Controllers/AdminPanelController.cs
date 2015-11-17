@@ -7,7 +7,7 @@ using WypasionaKsiegarniaMVC.Models;
 
 namespace WypasionaKsiegarniaMVC.Controllers
 {
-    public class AdminPanelController : Controller
+    public class AddProductController : Controller
     {
         private List<Product> products = new List<Product>();
 
