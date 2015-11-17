@@ -25,7 +25,7 @@
             <th>Sub Total</th>
         </tr>
         @foreach (Item item in (List<Item>)Session["cart"])
-        {
+        { 
             <tr>
                 <th>@item.Product.ISBN</th>
                 <th>@item.Product.Title</th>
