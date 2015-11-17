@@ -13,7 +13,7 @@ namespace WypasionaKsiegarniaMVC.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201511162258321_1st"; }
+            get { return "201511170904117_1st"; }
         }
         
         string IMigrationMetadata.Source
