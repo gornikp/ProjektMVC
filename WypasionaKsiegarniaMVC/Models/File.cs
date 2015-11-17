@@ -9,6 +9,10 @@ namespace WypasionaKsiegarniaMVC.Models
 {
     public class File
     {
+        public File (string address)
+        {
+            this.Address = address;
+        }
         public int FileID { get; set; }
         [Display(Name = "Files")]
         public string Address { get; set; }

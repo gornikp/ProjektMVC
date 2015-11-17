@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WypasionaKsiegarniaMVC.Models;
-
-namespace WypasionaKsiegarniaMVC.Controllers
+﻿namespace WypasionaKsiegarniaMVC.Models
 {
-    class Item
+    public class Item
     {
         private Product product = new Product();
         private int quantity;

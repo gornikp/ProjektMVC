@@ -57,8 +57,6 @@ namespace WypasionaKsiegarniaMVC.Models
 
         [Display(Name = "Description")]
         public string Description { get; set; }
-        public int FileID { get; set; }
-        public int PictureID { get; set; }
 
         public virtual ICollection<Picture> Pictures { get; set; }
         public virtual ICollection<File> Files { get; set; }

@@ -181,7 +181,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Item.cs" />
+    <Compile Include="Migrations\201511171925328_4th.cs" />
+    <Compile Include="Migrations\201511171925328_4th.Designer.cs">
+      <DependentUpon>201511171925328_4th.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductListController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -282,7 +286,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -301,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511171428368_3rd.resx">
       <DependentUpon>201511171428368_3rd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511171925328_4th.resx">
+      <DependentUpon>201511171925328_4th.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
