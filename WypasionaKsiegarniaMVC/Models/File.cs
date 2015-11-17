@@ -12,9 +12,6 @@ namespace WypasionaKsiegarniaMVC.Models
         public int FileID { get; set; }
         [Display(Name = "Files")]
         public Uri Address { get; set; }
-
-        public int ProductID { get; set; }
-
         public virtual Product Product { get; set; }
     }
 }
