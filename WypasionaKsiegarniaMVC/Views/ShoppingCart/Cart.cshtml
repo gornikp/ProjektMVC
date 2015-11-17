@@ -24,12 +24,12 @@
             <th>Quantity</th>
             <th>Sub Total</th>
         </tr>
-        @foreach (var item in Session["cart"])
+        @foreach (var item in (List<Product>)Session["cart"])
         {
             <tr>
-                <th>@item.Product.ISBN</th>
-                <th>@item.Product.Title</th>
-                <th>@item.Product.Price</th>
+                <th>@item.ISBN</th>
+                <th>@item.Title</th>
+                <th>@item.Price</th>
                 <td align="center">Order Now</td>
             </tr>
         }
