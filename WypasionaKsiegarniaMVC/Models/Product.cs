@@ -50,22 +50,18 @@ namespace WypasionaKsiegarniaMVC.Models
         public bool Featured { get; set; }
 
         [Display(Name = "Discount")]
-        public int Discount { get; set; }
+        public double Discount { get; set; }
 
         [Display(Name = "Hidden")]
         public bool Hidden { get; set; }
 
         [Display(Name = "Description")]
-        [Required]
         public string Description { get; set; }
         public int FileID { get; set; }
         public int PictureID { get; set; }
 
         public virtual ICollection<Picture> Pictures { get; set; }
-
         public virtual ICollection<File> Files { get; set; }
-
-
         public virtual ICollection<Author> Authors { get; set; }
     }
 }

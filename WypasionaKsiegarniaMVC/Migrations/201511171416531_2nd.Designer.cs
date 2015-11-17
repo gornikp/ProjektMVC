@@ -7,13 +7,13 @@ namespace WypasionaKsiegarniaMVC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class _1st : IMigrationMetadata
+    public sealed partial class _2nd : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_1st));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_2nd));
         
         string IMigrationMetadata.Id
         {
-            get { return "201511170904117_1st"; }
+            get { return "201511171416531_2nd"; }
         }
         
         string IMigrationMetadata.Source

@@ -9,7 +9,7 @@ namespace WypasionaKsiegarniaMVC.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(WypasionaKsiegarniaMVC.Models.ApplicationDbContext context)

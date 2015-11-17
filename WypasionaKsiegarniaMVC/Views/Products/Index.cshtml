@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
@@ -47,11 +50,20 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PictureID)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISBN)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
@@ -89,9 +101,15 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ISBN }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ISBN }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ISBN })
+            @Html.DisplayFor(modelItem => item.FileID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PictureID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
         </td>
     </tr>
 }

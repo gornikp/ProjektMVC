@@ -12,7 +12,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
 {
     public class ProductsController : Controller
     {
-        private Product_DbContext db = new Product_DbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
         public ActionResult Index()
@@ -21,7 +21,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         }
 
         // GET: Products/Details/5
-        public ActionResult Details(long? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -46,7 +46,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description")] Product product)
+        public ActionResult Create([Bind(Include = "ProductID,ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description,FileID,PictureID")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         }
 
         // GET: Products/Edit/5
-        public ActionResult Edit(long? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -78,7 +78,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description,FileID,PictureID")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         }
 
         // GET: Products/Delete/5
-        public ActionResult Delete(long? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -107,7 +107,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(long id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
             db.Products.Remove(product);
