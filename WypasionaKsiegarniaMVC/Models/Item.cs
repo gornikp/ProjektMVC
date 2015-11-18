@@ -2,11 +2,8 @@
 {
     public class Item
     {
-        private Product product = new Product();
-        private int quantity;
-        public int Quantity { get { return quantity; } set { quantity = value; } }
-        public Product Product { get { return product; } set { product = value; } }
-
+        public Product Product {get; set;}
+        public int Quantity { get; set; }
         public Item()
         {
 
@@ -14,8 +11,8 @@
 
         public Item(Product product, int quantity)
         {
-            this.product = product;
-            this.quantity = quantity;
+            this.Product = product;
+            this.Quantity = quantity;
         }
 
     }

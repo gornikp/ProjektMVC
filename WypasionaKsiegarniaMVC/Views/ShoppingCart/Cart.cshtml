@@ -1,9 +1,4 @@
-﻿
-@{
-    ViewBag.Title = "Cart";
-}
-
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 @using WypasionaKsiegarniaMVC.Models;
@@ -31,11 +26,12 @@
                 <th>@item.Product.Title</th>
                 <th>@item.Product.Price</th>
                 <th>@item.Quantity</th>
-                <th>@item.Quantity * item.Product.Price</th>
-                <td align="center">Order Now</td>
+                <th>@(item.Quantity * item.Product.Price) zł</th>               
             </tr>
         }
     </table>
+    <br /><br />
+    @Html.ActionLink("Continue Shopping", "Index", "ProductList")
 </body>
 
 </html>

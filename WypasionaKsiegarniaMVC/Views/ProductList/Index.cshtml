@@ -1,33 +1,41 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 @using WypasionaKsiegarniaMVC.Models;
 <!DOCTYPE html>
+
 <html>
+
 <head>
+
     <meta name="viewport" content="width=device-width" />
 
+
 </head>
+
 <body>
-<h2>Index</h2>
+    <h2>Index</h2>
     <table cellpadding="2" cellspacing="2" border="1">
+
         <tr>
+
             <th>ISBN</th>
+            <th>Title </th>
             <th>Product</th>
+
         </tr>
         @foreach (Product p in ViewBag.listProducts)
         {
             <tr>
-                <th>@p.ISBN </th>
-                <th>@p.Title</th>
-                <th>@p.Price</th>
-                <td align="center">Order Now</td>
+                <th> @p.ISBN </th>
+                <th> @p.Title </th>
+                <th> @p.Price </th>
+                <td align="center">@Html.ActionLink("Order Now", "OrderNow", "ShoppingCart", new { id = p.ProductID }, null)</td>    
             </tr>
         }
+
     </table>
 </body>
 
+
 </html>
-
-

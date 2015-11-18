@@ -46,7 +46,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description,FileID,PictureID")] Product product)
+        public ActionResult Create([Bind(Include = "ProductID,ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description,FileID,PictureID")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description")] Product product)
         {
             if (ModelState.IsValid)
             {
