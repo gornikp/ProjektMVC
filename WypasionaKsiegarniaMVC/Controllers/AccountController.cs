@@ -139,13 +139,13 @@ namespace WypasionaKsiegarniaMVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            return RedirectToAction("TogetherRegisterAndAdress");
         }
 
         [AllowAnonymous]
         public ActionResult CreateAdress()
         {
-            return View();
+            return RedirectToAction("TogetherRegisterAndAdress");
         }
 
         [AllowAnonymous]
@@ -181,7 +181,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return RedirectToAction("TogetherRegisterAndAdress");
         }
 
         //
