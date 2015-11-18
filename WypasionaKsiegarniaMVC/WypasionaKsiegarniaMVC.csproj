@@ -203,6 +203,10 @@
     <Compile Include="Migrations\201511181144019_8th.Designer.cs">
       <DependentUpon>201511181144019_8th.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511181258510_9th.cs" />
+    <Compile Include="Migrations\201511181258510_9th.Designer.cs">
+      <DependentUpon>201511181258510_9th.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -340,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511181144019_8th.resx">
       <DependentUpon>201511181144019_8th.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511181258510_9th.resx">
+      <DependentUpon>201511181258510_9th.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
