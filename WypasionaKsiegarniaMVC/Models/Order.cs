@@ -52,7 +52,7 @@ namespace WypasionaKsiegarniaMVC.Models
         
         [CreditCard]
         [Required]
-        [Range(10000000000000000, 99999999999999999, ErrorMessage = "Invalid number of card!")]
+        [Range(1000000000000000, 9999999999999999, ErrorMessage = "Invalid number of card!")]
         [Display(Name = "Card number")]
         public long CardNumber { get; set; }
 
