@@ -142,6 +142,18 @@ namespace WypasionaKsiegarniaMVC.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult CreateAdress()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult TogetherRegisterAndAdress()
+        {
+            return View();
+        }
+
         //
         // POST: /Account/Register
         [HttpPost]
