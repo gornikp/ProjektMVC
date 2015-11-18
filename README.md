@@ -29,7 +29,7 @@ KOSZYK:
  - miejsce na wpisanie kodu rabatowego ?
 
 USTAWIENIA PRZESYLKI:
- - mozliwosc wybrania adresu zapisanego przy urzytkowniku (moze on miec wiele adresow)
+ - mozliwosc wybrania adresu zapisanego przy uzytkowniku (moze on miec wiele adresow)
  - sposob wysylki
  - sposob platnosci
  - kraj
