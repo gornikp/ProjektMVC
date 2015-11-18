@@ -28,7 +28,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // GET: Order/Create
         public ActionResult Create(ShoppingCartController cartShopping)
         {
-            //List<CartItem> cart = new List<CartItem>();
+            //List<Item> cart = new List<Item>();
            // cart= Session['cart'];
             return View();
         }

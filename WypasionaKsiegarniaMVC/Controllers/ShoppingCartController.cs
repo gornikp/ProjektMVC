@@ -15,12 +15,13 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
-            return View();
+            return View("Cart");
         }
         
 
         private int isExisting(int id)
         {
+            //db.Cart.Add((Cart)Session["cart"]);
             List<CartItem> cart = (List<CartItem>)Session["cart"];
             for (int i = 0; i < cart.Count; i++)
                 if (cart[i].Product.ProductID == id)

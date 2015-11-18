@@ -44,7 +44,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // GET: AddProduct/Create
         public ActionResult Create()
         {
-            return View();
+            return View(products.ToList());
         }
 
         // POST: AddProduct/Create
@@ -84,7 +84,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // GET: AddProduct/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(products.ToList());
         }
 
         // POST: AddProduct/Delete/5
