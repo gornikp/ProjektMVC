@@ -191,6 +191,16 @@
     <Compile Include="Migrations\201511180052377_5th.Designer.cs">
       <DependentUpon>201511180052377_5th.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511180938541_6th.cs" />
+    <Compile Include="Migrations\201511180938541_6th.Designer.cs">
+      <DependentUpon>201511180938541_6th.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511181114530_7th.cs" />
+    <Compile Include="Migrations\201511181114530_7th.Designer.cs">
+      <DependentUpon>201511181114530_7th.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductListController.cs" />
@@ -317,6 +327,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511180052377_5th.resx">
       <DependentUpon>201511180052377_5th.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511180938541_6th.resx">
+      <DependentUpon>201511180938541_6th.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511181114530_7th.resx">
+      <DependentUpon>201511181114530_7th.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace WypasionaKsiegarniaMVC.Models
 {
@@ -23,6 +24,9 @@ namespace WypasionaKsiegarniaMVC.Models
             this.Product = product;
             this.Quantity = quantity;
         }
+        public CartItem()
+        { }
+        public virtual Cart Cart { get; set; }
 
     }
 }
