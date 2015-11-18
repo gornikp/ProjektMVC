@@ -20,7 +20,8 @@ PRODUKT:
  - rok
  - ilosc stron
  - format
-
+ - wybor plikow/obrazkow
+ 
 KOSZYK:
  - id_ksiazki/produktu
  - obiekt ksiazka/produkt - nazwa, autor, zdjecie, ilosc, cena produktu razem
@@ -28,6 +29,7 @@ KOSZYK:
  - miejsce na wpisanie kodu rabatowego ?
 
 USTAWIENIA PRZESYLKI:
+ - mozliwosc wybrania adresu zapisanego przy urzytkowniku (moze on miec wiele adresow)
  - sposob wysylki
  - sposob platnosci
  - kraj
