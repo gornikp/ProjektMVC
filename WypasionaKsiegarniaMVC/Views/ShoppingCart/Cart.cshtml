@@ -19,7 +19,7 @@
             <th>Quantity</th>
             <th>Sub Total</th>
         </tr>
-        @foreach (Item item in (List<Item>)Session["cart"])
+        @foreach (CartItem item in (List<CartItem>)Session["cart"])
         {
             <tr>
                 <th>@item.Product.ISBN</th>

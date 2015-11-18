@@ -27,6 +27,7 @@ namespace WypasionaKsiegarniaMVC.Models
         public DbSet<Author> Authors { get; set; }
         public DbSet<File> Files { get; set; }
         public DbSet<Picture> Picturess { get; set; }
+        public DbSet<CartItem> ShoppingCartItems { get; set; }
 
         public static ApplicationDbContext Create()
         {
