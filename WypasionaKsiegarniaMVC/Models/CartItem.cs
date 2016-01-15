@@ -26,7 +26,6 @@ namespace WypasionaKsiegarniaMVC.Models
         }
         public CartItem()
         { }
-        public virtual Cart Cart { get; set; }
 
     }
 }

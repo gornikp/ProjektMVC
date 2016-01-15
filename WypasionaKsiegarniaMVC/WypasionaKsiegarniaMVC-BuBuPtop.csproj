@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>44301</IISExpressSSLPort>
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -181,60 +181,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511171925328_4th.cs" />
-    <Compile Include="Migrations\201511171925328_4th.Designer.cs">
-      <DependentUpon>201511171925328_4th.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511180052377_5th.cs" />
-    <Compile Include="Migrations\201511180052377_5th.Designer.cs">
-      <DependentUpon>201511180052377_5th.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511180938541_6th.cs" />
-    <Compile Include="Migrations\201511180938541_6th.Designer.cs">
-      <DependentUpon>201511180938541_6th.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511181114530_7th.cs" />
-    <Compile Include="Migrations\201511181114530_7th.Designer.cs">
-      <DependentUpon>201511181114530_7th.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511181144019_8th.cs" />
-    <Compile Include="Migrations\201511181144019_8th.Designer.cs">
-      <DependentUpon>201511181144019_8th.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511181258510_9th.cs" />
-    <Compile Include="Migrations\201511181258510_9th.Designer.cs">
-      <DependentUpon>201511181258510_9th.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601151638396_Nowa_baza.cs" />
-    <Compile Include="Migrations\201601151638396_Nowa_baza.Designer.cs">
-      <DependentUpon>201601151638396_Nowa_baza.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Address.cs" />
-    <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Controllers\Item.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductListController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511171407458_1st.cs" />
-    <Compile Include="Migrations\201511171407458_1st.Designer.cs">
-      <DependentUpon>201511171407458_1st.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511171416531_2nd.cs" />
-    <Compile Include="Migrations\201511171416531_2nd.Designer.cs">
-      <DependentUpon>201511171416531_2nd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511171428368_3rd.cs" />
-    <Compile Include="Migrations\201511171428368_3rd.Designer.cs">
-      <DependentUpon>201511171428368_3rd.cs</DependentUpon>
+    <Compile Include="Migrations\201511170904117_1st.cs" />
+    <Compile Include="Migrations\201511170904117_1st.Designer.cs">
+      <DependentUpon>201511170904117_1st.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -242,17 +199,13 @@
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Picture.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Product_DbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -261,17 +214,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Content>
-    <None Include="DataSet1.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -324,16 +266,19 @@
     <Content Include="Views\AdminPanel\Edit.cshtml" />
     <Content Include="Views\AdminPanel\List.cshtml" />
     <Content Include="Views\ProductList\Index.cshtml" />
-    <Content Include="Views\ShoppingCart\Cart.cshtml" />
+    <Content Include="Views\ProductList\Listed.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Account\CreateAdress.cshtml" />
-    <Content Include="Views\Account\TogetherRegisterAndAdress.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Cart.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Cart\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -343,35 +288,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511171407458_1st.resx">
-      <DependentUpon>201511171407458_1st.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511171416531_2nd.resx">
-      <DependentUpon>201511171416531_2nd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511171428368_3rd.resx">
-      <DependentUpon>201511171428368_3rd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511171925328_4th.resx">
-      <DependentUpon>201511171925328_4th.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511180052377_5th.resx">
-      <DependentUpon>201511180052377_5th.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511180938541_6th.resx">
-      <DependentUpon>201511180938541_6th.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511181114530_7th.resx">
-      <DependentUpon>201511181114530_7th.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511181144019_8th.resx">
-      <DependentUpon>201511181144019_8th.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511181258510_9th.resx">
-      <DependentUpon>201511181258510_9th.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601151638396_Nowa_baza.resx">
-      <DependentUpon>201601151638396_Nowa_baza.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511170904117_1st.resx">
+      <DependentUpon>201511170904117_1st.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -396,9 +314,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>31035</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44301/</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>https://localhost:44301/</IISAppRootUrl>
+          <IISUrl>https://localhost:44300/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
