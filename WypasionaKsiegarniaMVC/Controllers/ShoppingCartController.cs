@@ -67,7 +67,34 @@ namespace WypasionaKsiegarniaMVC.Controllers
             }
             return View("Cart");
         }
-        public ActionResult Remove(int id) //Add to cart
+        public ActionResult OrderNow2(int id,int amount) //Add to cart
+        {
+
+            if (Session["cart"] == null)
+            {
+
+                List<CartItem> cart = new List<CartItem>();
+                cart.Add(new CartItem(db.Products.Find(id), amount));
+                Session["cart"] = cart;
+
+            }
+            else
+            {            
+                List<CartItem> cart = (List<CartItem>)Session["cart"];
+                int index = isExisting(id);
+                if (index == -1)
+                    cart.Add(new CartItem(db.Products.Find(id), amount));
+                else
+                    cart[index].Quantity += amount;
+                Session["cart"] = cart;
+            }
+            List<CartItem> cart2 = new List<CartItem>();
+            cart2 = (List<CartItem>)Session["cartbin"];
+            int index2 = isExisting2(id);
+            cart2.RemoveAt(index2);
+            return View("Cart");
+        }
+        public ActionResult Remove(int id,int quantity) //Add to cart
         {
             int index = isExisting(id);
             List<CartItem> cart = (List<CartItem>)Session["cart"];
@@ -76,7 +103,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
             {
 
                 List<CartItem> cartbin = new List<CartItem>();
-                cartbin.Add(new CartItem(db.Products.Find(id), 1));
+                cartbin.Add(new CartItem(db.Products.Find(id), quantity));
                 Session["cartbin"] = cartbin;
 
             }
@@ -85,26 +112,14 @@ namespace WypasionaKsiegarniaMVC.Controllers
                 List<CartItem> cartbin = (List<CartItem>)Session["cartbin"];
                 int index2 = isExisting2(id);
                 if (index2 == -1)
-                    cartbin.Add(new CartItem(db.Products.Find(id), amount(id)));
+                    cartbin.Add(new CartItem(db.Products.Find(id), quantity));
                 else
-                    cartbin[index2].Quantity += amount(id);
+                    cartbin[index2].Quantity += quantity;
                 Session["cartbin"] = cartbin;
             }
             cart.RemoveAt(index);
             Session["cart"] = cart;
             return View("CartBin");
-        }
-        private int amount(int id)
-        {
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
-            foreach (CartItem item in cart)
-            {
-                if (item.Product.ProductID==id)
-                {
-                   return item.Quantity;
-                }
-            }
-            return 0;
-        }
+        }     
     }
 }

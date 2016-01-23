@@ -22,17 +22,20 @@
         @{
             double s = 0;
         }
-        @foreach (CartItem item in (List<CartItem>)Session["cartbin"])
+        @if ((List<CartItem>)Session["cartbin"] != null)
         {
-            s += item.Product.Price * item.Quantity;
+            foreach (CartItem item in (List<CartItem>)Session["cartbin"])
+            {
+                s += item.Product.Price * item.Quantity;
             <tr>
                 <th>@item.Product.ISBN</th>
                 <th>@item.Product.Title</th>
                 <th>@item.Product.Price</th>
                 <th>@item.Quantity</th>
                 <th>@(item.Quantity * item.Product.Price) zł</th>
-                <th>@Html.ActionLink("Order Now", "OrderNow", "ShoppingCart", new { id = item.Product.ProductID }, null)</th>
+                <th>@Html.ActionLink("Order Now", "OrderNow2", "ShoppingCart", new { id = item.Product.ProductID, amount = item.Quantity }, null)</th>
             </tr>
+            }
         }
         <tr>
             <th align="left" colspan="4">Sum</th>
@@ -41,6 +44,8 @@
     </table>
     <br /><br />
     @Html.ActionLink("Continue Shopping", "Index", "ProductList")
+    <br /><br />
+    @Html.ActionLink("Cart", "Index", "ShoppingCart")
 </body>
 
 </html>
