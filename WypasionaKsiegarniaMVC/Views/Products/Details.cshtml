@@ -117,6 +117,25 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("Back to List", "Index")
+
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+    @Html.ActionLink("Back to List", "Index")*@
+
+        
+        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-primary" })
+     
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-warning" })
+
+        }
+        
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Delete", "Delete", new { id = Model.ProductID }, new { @class = "btn btn-primary" })
+        }
+    
+          
+       
+
 </p>
