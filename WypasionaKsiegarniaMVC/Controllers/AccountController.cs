@@ -139,7 +139,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return RedirectToAction("TogetherRegisterAndAdress");
+            return View();          //return RedirectToAction("TogetherRegisterAndAdress");
         }
 
         [AllowAnonymous]
