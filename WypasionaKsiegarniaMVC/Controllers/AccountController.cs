@@ -139,7 +139,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return RedirectToAction("TogetherRegisterAndAdress");
+            return View();//RedirectToAction("TogetherRegisterAndAdress");  //View();
         }
 
         [AllowAnonymous]
@@ -165,6 +165,8 @@ namespace WypasionaKsiegarniaMVC.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                var address = new Address { Name=model.Name,Surname=model.Surname,Street=model.Street,HouseNumber=model.HouseNumber,LocalNumber=model.LocalNumber,City=model.City,PostCode=model.PostCode,Country=model.Country, DateOfBirth =model.DateOfBirth,userId=user.Id};
+            
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -403,7 +405,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);   //sprawdzic .SignOut():
             return RedirectToAction("Index", "Home");
         }
 
