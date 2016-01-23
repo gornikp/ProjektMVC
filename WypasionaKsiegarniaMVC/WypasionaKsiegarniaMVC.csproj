@@ -224,6 +224,50 @@
     <Compile Include="Migrations\201601231820310_elo2.Designer.cs">
       <DependentUpon>201601231820310_elo2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601232208396_baza_kategorie.cs" />
+    <Compile Include="Migrations\201601232208396_baza_kategorie.Designer.cs">
+      <DependentUpon>201601232208396_baza_kategorie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601232210162_baza_kategorie2.cs" />
+    <Compile Include="Migrations\201601232210162_baza_kategorie2.Designer.cs">
+      <DependentUpon>201601232210162_baza_kategorie2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601232211327_baza_kategorie21.cs" />
+    <Compile Include="Migrations\201601232211327_baza_kategorie21.Designer.cs">
+      <DependentUpon>201601232211327_baza_kategorie21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601232225135_baza_kategoriefinale2.cs" />
+    <Compile Include="Migrations\201601232225135_baza_kategoriefinale2.Designer.cs">
+      <DependentUpon>201601232225135_baza_kategoriefinale2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601232241397_baza_kategoriefinale22.cs" />
+    <Compile Include="Migrations\201601232241397_baza_kategoriefinale22.Designer.cs">
+      <DependentUpon>201601232241397_baza_kategoriefinale22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601232251572_baza_kategoriefinale23.cs" />
+    <Compile Include="Migrations\201601232251572_baza_kategoriefinale23.Designer.cs">
+      <DependentUpon>201601232251572_baza_kategoriefinale23.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601232302574_baza_kategoriefinale231.cs" />
+    <Compile Include="Migrations\201601232302574_baza_kategoriefinale231.Designer.cs">
+      <DependentUpon>201601232302574_baza_kategoriefinale231.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601232304526_baza_kategoriefinale2311.cs" />
+    <Compile Include="Migrations\201601232304526_baza_kategoriefinale2311.Designer.cs">
+      <DependentUpon>201601232304526_baza_kategoriefinale2311.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601232308175_baza_kategoriefinale232.cs" />
+    <Compile Include="Migrations\201601232308175_baza_kategoriefinale232.Designer.cs">
+      <DependentUpon>201601232308175_baza_kategoriefinale232.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601232325560_baza_kategoriefinale2321.cs" />
+    <Compile Include="Migrations\201601232325560_baza_kategoriefinale2321.Designer.cs">
+      <DependentUpon>201601232325560_baza_kategoriefinale2321.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601232327406_baza_kategoriefinale2322.cs" />
+    <Compile Include="Migrations\201601232327406_baza_kategoriefinale2322.Designer.cs">
+      <DependentUpon>201601232327406_baza_kategoriefinale2322.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -248,6 +292,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -335,11 +380,6 @@
     <Content Include="Views\AdminPanel\List.cshtml" />
     <Content Include="Views\ProductList\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Cart.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Account\CreateAdress.cshtml" />
     <Content Include="Views\Account\TogetherRegisterAndAdress.cshtml" />
     <Content Include="Views\Files\Create.cshtml" />
@@ -348,6 +388,11 @@
     <Content Include="Views\Files\Edit.cshtml" />
     <Content Include="Views\Files\Index.cshtml" />
     <Content Include="Views\ShoppingCart\CartBin.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -394,6 +439,39 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601231820310_elo2.resx">
       <DependentUpon>201601231820310_elo2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601232208396_baza_kategorie.resx">
+      <DependentUpon>201601232208396_baza_kategorie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601232210162_baza_kategorie2.resx">
+      <DependentUpon>201601232210162_baza_kategorie2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601232211327_baza_kategorie21.resx">
+      <DependentUpon>201601232211327_baza_kategorie21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601232225135_baza_kategoriefinale2.resx">
+      <DependentUpon>201601232225135_baza_kategoriefinale2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601232241397_baza_kategoriefinale22.resx">
+      <DependentUpon>201601232241397_baza_kategoriefinale22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601232251572_baza_kategoriefinale23.resx">
+      <DependentUpon>201601232251572_baza_kategoriefinale23.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601232302574_baza_kategoriefinale231.resx">
+      <DependentUpon>201601232302574_baza_kategoriefinale231.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601232304526_baza_kategoriefinale2311.resx">
+      <DependentUpon>201601232304526_baza_kategoriefinale2311.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601232308175_baza_kategoriefinale232.resx">
+      <DependentUpon>201601232308175_baza_kategoriefinale232.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601232325560_baza_kategoriefinale2321.resx">
+      <DependentUpon>201601232325560_baza_kategoriefinale2321.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601232327406_baza_kategoriefinale2322.resx">
+      <DependentUpon>201601232327406_baza_kategoriefinale2322.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace WypasionaKsiegarniaMVC.Models
 {
     public class Cart
-    {   [Key]
+    {
+        [Key]
         public int CartID {get; set;}
 
         public virtual ICollection<CartItem> CartItems { get; set; }

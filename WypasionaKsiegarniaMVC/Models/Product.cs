@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,7 @@ namespace WypasionaKsiegarniaMVC.Models
 {
     public class Product
     {
+        [Key]
         public int ProductID { get; set; }
 
         [Display(Name = "ISBN")]
@@ -57,7 +59,8 @@ namespace WypasionaKsiegarniaMVC.Models
 
         [Display(Name = "Description")]
         public string Description { get; set; }
-
+        public virtual Category Category { get; set; }
+        public int CategoryID { get; set; }
         public virtual ICollection<Picture> Pictures { get; set; }
         public virtual ICollection<File> Files { get; set; }
         public virtual ICollection<Author> Authors { get; set; }

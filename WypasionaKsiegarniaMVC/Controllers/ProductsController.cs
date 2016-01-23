@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -15,19 +16,20 @@ namespace WypasionaKsiegarniaMVC.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.Products.ToList());
+            var products = db.Products.Include(p => p.Category);
+            return View(await products.ToListAsync());
         }
 
         // GET: Products/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -38,6 +40,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
             return View();
         }
 
@@ -46,30 +49,32 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "ProductID,ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description,CategoryID")] Product product)
         {
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", product.CategoryID);
             return View(product);
         }
 
         // GET: Products/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", product.CategoryID);
             return View(product);
         }
 
@@ -78,25 +83,26 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "ProductID,ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description,CategoryID")] Product product)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", product.CategoryID);
             return View(product);
         }
 
         // GET: Products/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -107,11 +113,11 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
+            Product product = await db.Products.FindAsync(id);
             db.Products.Remove(product);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 

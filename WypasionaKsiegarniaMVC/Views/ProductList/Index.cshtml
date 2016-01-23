@@ -10,7 +10,7 @@
 
     <meta name="viewport" content="width=device-width" />
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -22,6 +22,7 @@
             <th>ISBN</th>
             <th>Title </th>
             <th>Product</th>
+            <th>Quantity</th>
 
         </tr>
         @foreach (Product p in ViewBag.listProducts)
@@ -30,12 +31,28 @@
                 <th> @p.ISBN </th>
                 <th> @p.Title </th>
                 <th> @p.Price </th>
+                
+                <th>Qty:<div class="DetailAddToCart"><input type="number" value="1" class="Quantity" id="Quantity" width="1"/> <a id="AddToCartLink" href="@Url.Action("OrderNow", "ShoppingCart", new {id = p.ProductID})">AddToCart</a></div></th>
                 <td align="center">@Html.ActionLink("Order Now", "OrderNow", "ShoppingCart", new { id = p.ProductID }, null)</td>    
             </tr>
         }
 
     </table>
-</body>
+    <script>
+        $('#AddToCartLink').click(function () {
+            var link = $(this).attr('href') + '?quantity=' + $(this).siblings('.Quantity').val();
 
+            $.ajax({
+                url: link,
+                type: "POST",
+                success: AddToCartSuccess,
+                error: AddToCartFailure
+            });
+
+            return false;
+
+        });
+    </script>
+</body>
 
 </html>

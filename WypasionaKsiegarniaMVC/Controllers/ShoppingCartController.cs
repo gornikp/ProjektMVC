@@ -43,15 +43,14 @@ namespace WypasionaKsiegarniaMVC.Controllers
             return -1;
 
         }
-
-        public ActionResult OrderNow(int id) //Add to cart
+        public ActionResult OrderNow(int id, int quantity) //Add to cart
         {
 
             if (Session["cart"]==null)
             {
                 
                 List<CartItem> cart = new List<CartItem>();
-                cart.Add(new CartItem(db.Products.Find(id), 1));
+                cart.Add(new CartItem(db.Products.Find(id), quantity));
                 Session["cart"] = cart;
                 
             }
@@ -60,9 +59,9 @@ namespace WypasionaKsiegarniaMVC.Controllers
                 List<CartItem> cart = (List<CartItem>)Session["cart"];
                 int index = isExisting(id);
                 if (index == -1)
-                    cart.Add(new CartItem(db.Products.Find(id), 1));
+                    cart.Add(new CartItem(db.Products.Find(id), quantity));
                 else
-                    cart[index].Quantity += 1;
+                    cart[index].Quantity += quantity;
                 Session["cart"] = cart;
             }
             return View("Cart");

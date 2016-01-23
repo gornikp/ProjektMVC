@@ -10,8 +10,10 @@ namespace WypasionaKsiegarniaMVC.Models
     public class File
     {
         public int FileID { get; set; }
-        [Display(Name = "Files")]
+        [Display(Name = "Link")]
         public string Address { get; set; }
+        [Display(Name = "Name")]
+        public string Name { get; set; }
         public int ProductID { get; set; }
         public virtual Product Product { get; set; }
     }

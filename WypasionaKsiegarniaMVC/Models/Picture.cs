@@ -9,9 +9,12 @@ namespace WypasionaKsiegarniaMVC.Models
 {
     public class Picture
     {
+        [Key]
         public int PictureID { get; set; }
-        [Display(Name = "Address")]
+        [Display(Name = "Link")]
         public string Address { get; set; }
+        [Display(Name = "Name")]
+        public string Name { get; set; }
         public int ProductID { get; set; }
         public virtual Product Product { get; set; }
     }

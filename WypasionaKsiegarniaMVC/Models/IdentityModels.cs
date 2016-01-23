@@ -16,7 +16,8 @@ namespace WypasionaKsiegarniaMVC.Models
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
-
+        public int discount { get; set; }
+        public bool newsletter { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -32,6 +33,7 @@ namespace WypasionaKsiegarniaMVC.Models
             : base("MyCS", throwIfV1Schema: false)
         { }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<File> Files { get; set; }
         public DbSet<Picture> Pictures { get; set; }
