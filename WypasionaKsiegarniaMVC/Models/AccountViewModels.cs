@@ -65,63 +65,22 @@ namespace WypasionaKsiegarniaMVC.Models
 
     public class RegisterViewModel
     {
-
-        [Display(Name = "Name")]
-        [Required]
-        public string Name { get; set; }
-
-        [Display(Name = "Surname")]
-        [Required]
-        public string Surname { get; set; }
-
-        [Display(Name = "Street")]
-        [Required]
-        public string Street { get; set; }
-
-        [Display(Name = "House number")]
-        [Required]
-        public int HouseNumber { get; set; }
-
-        [Display(Name = "Local number")]
-        public int LocalNumber { get; set; }
-
-        [Display(Name = "City")]
-        [Required]
-        public string City { get; set; }
-
-        [Display(Name = "Postcode")]
-        [Required]
-        public int PostCode { get; set; }
-
-        [Display(Name = "Country")]
-        [Required]
-        public string Country { get; set; }
-
-        [Display(Name = "Birth Date")]
-        [Required]
-        public DateTime? DateOfBirth { get; set; }
-
-
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        public string password { get; set; }
+        public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "ConfirmPassword")]
+        [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string confirmpassword { get; set; }
+        public string ConfirmPassword { get; set; }
 
-
-        public string Email { get; set; }
-
-        public string Password { get; set; }
     }
 
     public class ResetPasswordViewModel
