@@ -15,9 +15,12 @@ namespace WypasionaKsiegarniaMVC.Models
         }
 
         public int PictureID { get; set; }
+
         [Display(Name = "Address")]
         public string Address { get; set; }
+
         public int ProductID { get; set; }
+
         public virtual Product Product { get; set; }
     }
 }

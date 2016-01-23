@@ -1,0 +1,72 @@
+﻿@model IEnumerable<WypasionaKsiegarniaMVC.Models.Product>
+
+@{
+    ViewBag.Title = "Featured";
+}
+
+<h2>News & Discounts</h2>
+<div class="panel panel-default">
+    <div class="panel-heading">Newest books</div>
+    <table class="table">
+        <tr>
+            <th> @Html.DisplayNameFor(model => model.ISBN) </th>
+            <th> @Html.DisplayNameFor(model => model.Title) </th>
+            <th> @Html.DisplayNameFor(model => model.Language) </th>
+            <th> @Html.DisplayNameFor(model => model.Price) </th>
+            <th> @Html.DisplayNameFor(model => model.Year) </th>
+            <th> @Html.DisplayNameFor(model => model.Publisher) </th>
+            <th> @Html.DisplayNameFor(model => model.PageAmount) </th>
+            <th> @Html.DisplayNameFor(model => model.Format) </th>
+            <th> @Html.DisplayNameFor(model => model.StockAmount) </th>
+        </tr>
+
+        @foreach (var item in (IEnumerable<WypasionaKsiegarniaMVC.Models.Product>)ViewBag.News)
+        {
+            <tr>
+                <td> @Html.DisplayFor(modelItem => item.ISBN) </td>
+                <td> @Html.DisplayFor(modelItem => item.Title) </td>
+                <td> @Html.DisplayFor(modelItem => item.Language) </td>
+                <td> @Html.DisplayFor(modelItem => item.Price) </td>
+                <td> @Html.DisplayFor(modelItem => item.Year) </td>
+                <td> @Html.DisplayFor(modelItem => item.Publisher) </td>
+                <td> @Html.DisplayFor(modelItem => item.PageAmount) </td>
+                <td> @Html.DisplayFor(modelItem => item.Format) </td>
+                <td> @Html.DisplayFor(modelItem => item.StockAmount) </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Books on sale!</div>
+    <table class="table">
+        <tr>
+            <th> @Html.DisplayNameFor(model => model.ISBN) </th>
+            <th> @Html.DisplayNameFor(model => model.Title) </th>
+            <th> @Html.DisplayNameFor(model => model.Language) </th>
+            <th> @Html.DisplayNameFor(model => model.Price) </th>
+            <th> @Html.DisplayNameFor(model => model.Year) </th>
+            <th> @Html.DisplayNameFor(model => model.Publisher) </th>
+            <th> @Html.DisplayNameFor(model => model.PageAmount) </th>
+            <th> @Html.DisplayNameFor(model => model.Format) </th>
+            <th> @Html.DisplayNameFor(model => model.StockAmount) </th>
+            <th> @Html.DisplayNameFor(model => model.Discount) </th>
+        </tr>
+
+        @foreach (var item in (IEnumerable<WypasionaKsiegarniaMVC.Models.Product>)ViewBag.Discounts)
+        {
+            <tr>
+                <td> @Html.DisplayFor(modelItem => item.ISBN) </td>
+                <td> @Html.DisplayFor(modelItem => item.Title) </td>
+                <td> @Html.DisplayFor(modelItem => item.Language) </td>
+                <td> @Html.DisplayFor(modelItem => item.Price) </td>
+                <td> @Html.DisplayFor(modelItem => item.Year) </td>
+                <td> @Html.DisplayFor(modelItem => item.Publisher) </td>
+                <td> @Html.DisplayFor(modelItem => item.PageAmount) </td>
+                <td> @Html.DisplayFor(modelItem => item.Format) </td>
+                <td> @Html.DisplayFor(modelItem => item.StockAmount) </td>
+                <td> @Html.DisplayFor(modelItem => item.Discount) </td>
+            </tr>
+        }
+    </table>
+</div>

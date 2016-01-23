@@ -333,8 +333,11 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Account\CreateAdress.cshtml" />
     <Content Include="Views\Account\TogetherRegisterAndAdress.cshtml" />
+    <Content Include="Views\Products\Featured.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Picture\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
