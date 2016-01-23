@@ -9,9 +9,9 @@ namespace WypasionaKsiegarniaMVC.Models
 {
     public class Picture
     {
-        public Picture(string address)
+        public Picture(string link)
         {
-            this.Address = address;
+            this.Address = link;
         }
 
         public int PictureID { get; set; }
