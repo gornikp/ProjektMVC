@@ -180,6 +180,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminPanelController.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DataSet1.Designer.cs">
@@ -214,6 +215,14 @@
     <Compile Include="Migrations\201601151638396_Nowa_baza.cs" />
     <Compile Include="Migrations\201601151638396_Nowa_baza.Designer.cs">
       <DependentUpon>201601151638396_Nowa_baza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601231743108_elo.cs" />
+    <Compile Include="Migrations\201601231743108_elo.Designer.cs">
+      <DependentUpon>201601231743108_elo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601231820310_elo2.cs" />
+    <Compile Include="Migrations\201601231820310_elo2.Designer.cs">
+      <DependentUpon>201601231820310_elo2.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -333,6 +342,12 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Account\CreateAdress.cshtml" />
     <Content Include="Views\Account\TogetherRegisterAndAdress.cshtml" />
+    <Content Include="Views\Files\Create.cshtml" />
+    <Content Include="Views\Files\Delete.cshtml" />
+    <Content Include="Views\Files\Details.cshtml" />
+    <Content Include="Views\Files\Edit.cshtml" />
+    <Content Include="Views\Files\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\CartBin.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -373,6 +388,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601151638396_Nowa_baza.resx">
       <DependentUpon>201601151638396_Nowa_baza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601231743108_elo.resx">
+      <DependentUpon>201601231743108_elo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601231820310_elo2.resx">
+      <DependentUpon>201601231820310_elo2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

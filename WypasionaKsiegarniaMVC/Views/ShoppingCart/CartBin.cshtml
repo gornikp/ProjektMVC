@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Cart";
+    ViewBag.Title = "CartBin";
 }
 @using WypasionaKsiegarniaMVC.Models;
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <h2>Cart</h2>
+    <h2>CartBin</h2>
     <h2>Index</h2>
     <table cellpadding="2" cellspacing="2" border="1">
         <tr>
@@ -20,9 +20,9 @@
             <th>Sub Total</th>
         </tr>
         @{
-        double s = 0;
+            double s = 0;
         }
-        @foreach (CartItem item in (List<CartItem>)Session["cart"])
+        @foreach (CartItem item in (List<CartItem>)Session["cartbin"])
         {
             s += item.Product.Price * item.Quantity;
             <tr>
@@ -30,12 +30,12 @@
                 <th>@item.Product.Title</th>
                 <th>@item.Product.Price</th>
                 <th>@item.Quantity</th>
-                <th>@(item.Quantity * item.Product.Price) zł</th>   
-                <th>@Html.ActionLink("delete one", "Remove", "ShoppingCart",new { id = item.Product.ProductID },null)</th>            
+                <th>@(item.Quantity * item.Product.Price) zł</th>
+                <th>@Html.ActionLink("Order Now", "OrderNow", "ShoppingCart", new { id = item.Product.ProductID }, null)</th>
             </tr>
         }
         <tr>
-            <th align="left" colspan="4" >Sum</th>
+            <th align="left" colspan="4">Sum</th>
             <td>@s</td>
         </tr>
     </table>
@@ -44,5 +44,3 @@
 </body>
 
 </html>
-
-

@@ -24,8 +24,8 @@ namespace WypasionaKsiegarniaMVC.Controllers
                 p.Language = "english";
                 p.PageAmount = 1000;
                 p.Price = 56.50;
-                p.Pictures.Add(new Picture("http://weknowyourdreams.com/image.php?pic=/images/book/book-06.jpg"));
-                p.Pictures.Add(new Picture("http://www.bradleysbookoutlet.com/wp-content/uploads/2013/06/bradleys-book-outlet-books-only-logo.png"));
+                //p.Pictures.Add(new Picture("http://weknowyourdreams.com/image.php?pic=/images/book/book-06.jpg"));
+                //p.Pictures.Add(new Picture("http://www.bradleysbookoutlet.com/wp-content/uploads/2013/06/bradleys-book-outlet-books-only-logo.png"));
                 p.Publisher = "Book4You";
                 p.StockAmount = 10;
                 p.Title = "Back And Again.";
