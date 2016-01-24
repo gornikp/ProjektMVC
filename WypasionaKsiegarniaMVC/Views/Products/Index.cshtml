@@ -101,12 +101,21 @@
             @Html.DisplayFor(modelItem => item.Hidden)
         </td>*@
         <td>
+            @using (Html.BeginForm("OrderNow", "ShoppingCart", FormMethod.Post))
+            {
+                @Html.TextBox("quantity", null, new { type = "number", style = "width:35px", min = "0", @Value = "1" })
+                @Html.Hidden("id", item.ProductID)
+                <button type="submit" class="btn btn-danger">Add</button>
+            }
+        </td><td>
             @Html.ActionLink("Details", "Details", new { id = item.ProductID },new {  @class = "btn btn-warning" })
             
             
-            
-                @Html.ActionLink("Edit", "Edit", new { id=item.ProductID },new { @class = "btn btn-danger"  })  
-            
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-danger" })  
+            }
+
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
                 @Html.ActionLink("Delete", "Delete", new { id=item.ProductID },new { @class = "btn btn-primary" })

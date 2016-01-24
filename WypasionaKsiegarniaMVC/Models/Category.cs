@@ -11,7 +11,7 @@ namespace WypasionaKsiegarniaMVC.Models
         [Key]
         public int CategoryID { get; set; }
         public int FatherID { get; set; }
-        [Display(Name = "Name")]
+        [Display(Name = "Category")]
         [Required]
         public string Name { get; set; }
         public int FatherMainID { get; set; }

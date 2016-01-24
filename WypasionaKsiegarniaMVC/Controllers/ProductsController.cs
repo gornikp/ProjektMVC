@@ -21,6 +21,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
             var products = db.Products.Include(p => p.Category).Include(p=>p.Authors).Where(p=>p.Hidden==false);
             return View(await products.ToListAsync());
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult List()
         {
             var products = db.Products.Include(p => p.Category).Include(p => p.Authors);

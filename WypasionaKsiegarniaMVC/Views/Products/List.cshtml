@@ -101,10 +101,12 @@
             @Html.DisplayFor(modelItem => item.Hidden)
         </td>*@
         <td>
+           
+
             @Html.ActionLink("Details", "Details", new { id = item.ProductID },new {  @class = "btn btn-warning" })
             
             
-            
+
                 @Html.ActionLink("Edit", "Edit", new { id=item.ProductID },new { @class = "btn btn-danger"  })  
             
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
