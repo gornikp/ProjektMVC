@@ -60,8 +60,8 @@ namespace WypasionaKsiegarniaMVC
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "68099196006-5k5adqkpfkadgdae3rf003orapgcfhpk.apps.googleusercontent.com",
-                ClientSecret = "Nq9fG899lQ_i6dToI4-VOGqv"
+                ClientId = "867383948538-ff7f4e60mhhua9ig8e8v62k1j6ng8cgj.apps.googleusercontent.com",
+                ClientSecret = "rbh1Y_BPuYbFebvsdSwORmOC-VOGqv"
             });
         }
     }

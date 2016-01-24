@@ -173,15 +173,5 @@ namespace WypasionaKsiegarniaMVC.Models
                 um.RemoveFromRole(userId, role.RoleId);
             }
         }
-        public bool FindUsersInRole(string roleName, string usernameToMatch)
-        {
-            ApplicationDbContext db = new ApplicationDbContext();
-
-            //var query = db.Users.Where(b=>b.UserName==usernameToMatch).Where(b => b.Roles.Where(a=>a.RoleId==
-            //if (query.Count() > 0)
-                //user = query.First();
-
-            return true;
-        }
     }
 }

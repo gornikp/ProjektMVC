@@ -74,7 +74,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
             }
             return View("Cart");
         }
-        public ActionResult OrderNow2(int? id,int? amount) //Add to cart
+        public ActionResult OrderNow2(int? id,int? amount) //Add to cart afyer removal
         {
             if (amount == null || id == null)
             {
@@ -105,7 +105,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
             cart2.RemoveAt(index2);
             return View("Cart");
         }
-        public ActionResult Remove(int id,int quantity) //Add to cart
+        public ActionResult Remove(int id,int quantity) //remove from cart
         {
             int index = isExisting(id);
             List<CartItem> cart = (List<CartItem>)Session["cart"];
@@ -131,6 +131,19 @@ namespace WypasionaKsiegarniaMVC.Controllers
             cart.RemoveAt(index);
             Session["cart"] = cart;
             return View("CartBin");
-        }     
+        }
+
+        public ActionResult MakeAnOrder()
+        {
+
+            ApplicationDbContext db = new ApplicationDbContext();
+
+
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
+
+            CartItem item = new CartItem();
+
+            return View("CartBin");
+        }
     }
 }
