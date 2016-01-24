@@ -72,6 +72,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
                 else
                     cart[index].Quantity += quantity;
                 Session["cart"] = cart;
+                Session["licz"] = cart.Count;
             }
             return View("Cart");
         }

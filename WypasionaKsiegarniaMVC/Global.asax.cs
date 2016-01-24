@@ -33,6 +33,7 @@ namespace WypasionaKsiegarniaMVC
         void Session_Start(object sender, EventArgs e)
         {
             // Code that runs when a new session is started
+            Session["licz"] = 0;
             Application.Lock();
             Application["SiteVisitedCounter"] = Convert.ToInt32(Application["SiteVisitedCounter"]) + 1;
             Session["SiteVisitedCounter"] = Application["SiteVisitedCounter"];
