@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WypasionaKsiegarniaMVC.Models;
+using Microsoft.AspNet.Identity;
 
 namespace WypasionaKsiegarniaMVC.Controllers
 {
