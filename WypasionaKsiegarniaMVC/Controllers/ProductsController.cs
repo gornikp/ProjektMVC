@@ -62,6 +62,18 @@ namespace WypasionaKsiegarniaMVC.Controllers
             return View(product);
         }
 
+        // GET: Products/Featured
+        public ActionResult Featured()
+        {
+            int maxId = db.Products.Max(i => i.ProductID);
+            IEnumerable <Product> news = (db.Products.ToList()).Where(i => i.ProductID > maxId - 6);
+            IEnumerable <Product> discounts = (db.Products.ToList()).Where(i => i.Featured = true & i.Discount < 1);
+            ViewBag.News = news;
+            ViewBag.Discounts = discounts;
+
+            return View();
+        }
+
         // GET: Products/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
