@@ -9,13 +9,9 @@ namespace WypasionaKsiegarniaMVC.Models
     public class Order
     {
        [Key]
-       public int OrderID { get; set; }
-        
-        [CreditCard]
-        [Required]
-        [Range(1000000000000000, 9999999999999999, ErrorMessage = "Invalid number of card!")]
-        [Display(Name = "Card number")]
-        public long CardNumber { get; set; }
+       public int OrderID { get; set; }       
+       
+        public string status { get; set; }
 
         public virtual Cart Cart {get; set;}
 

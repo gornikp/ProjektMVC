@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Web.Mvc;
 using WypasionaKsiegarniaMVC.Models;
 using System.Runtime.InteropServices;
+using Microsoft.AspNet.Identity;
 
 namespace WypasionaKsiegarniaMVC.Controllers
 {
@@ -133,15 +134,47 @@ namespace WypasionaKsiegarniaMVC.Controllers
             return View("CartBin");
         }
 
-        public ActionResult MakeAnOrder()
+        public async System.Threading.Tasks.Task<ActionResult> MakeAnOrder(Address adres)
         {
-
+            long card = 1;
             ApplicationDbContext db = new ApplicationDbContext();
 
 
             List<CartItem> cart = (List<CartItem>)Session["cart"];
 
-            CartItem item = new CartItem();
+            Cart koszyk = new Cart();
+            Product p = null;
+
+            foreach (CartItem item in cart)
+            {
+                p = item.Product;
+               // p = db.Products.Where(x => x.ProductID == item.ProductID).FirstOrDefault<Product>();
+                if (p != null)
+                {
+                    p.StockAmount -= item.Quantity;
+                    db.Entry(p).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            
+            foreach (CartItem item in cart)
+            {
+                item.DateCreated = DateTime.Now;
+                db.CartItems.Add(item);
+            }
+            koszyk.CartItems = cart;
+            koszyk.userId = User.Identity.GetUserId();
+            db.Cart.Add(koszyk);
+            await db.SaveChangesAsync();
+            Order zamowienie = new Order();
+
+            zamowienie.Cart = koszyk;
+            zamowienie.userId = User.Identity.GetUserId();
+            //zamowienie.CardNumber = card;
+            //zamowienie.Address = adres;
+            db.Orders.Add(zamowienie);
+            await db.SaveChangesAsync();
+
 
             return View("CartBin");
         }
