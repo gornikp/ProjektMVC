@@ -37,7 +37,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
                     MvcApplication.theme = "bootstrap.min.css";
                     break;
                 case 2:
-                    MvcApplication.theme = "bootstrap3.min.css";
+                    MvcApplication.theme = "bootstrap4.min.css";
                     break;
 
                 case 3:
