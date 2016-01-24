@@ -81,13 +81,23 @@ namespace WypasionaKsiegarniaMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await db.Products.FindAsync(id);
-            if (product == null)
+            //Product product = await db.Products.FindAsync(id);
+            var productAuthorViewModel = new ProductAuthorViewModel
+            {
+                Product = db.Products.Include(i => i.Authors).First(i => i.ProductID == id),
+            };
+
+            if (productAuthorViewModel.Product == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", product.CategoryID);
-            return View(product);
+
+            var allAuthorsList = db.Authors.ToList();
+            productAuthorViewModel.AllAuthorsList = allAuthorsList.Select(i => new SelectListItem { Text = i.Name, Value=i.AuthorsID.ToString() });
+
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", productAuthorViewModel.Product.CategoryID);
+            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorsId", "Name", productAuthorViewModel.Product.ProductID);
+            return View(productAuthorViewModel);
         }
 
         // POST: Products/Edit/5
