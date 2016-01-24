@@ -286,6 +286,10 @@
     <Compile Include="Migrations\201601241328569_poprawazamowienia.Designer.cs">
       <DependentUpon>201601241328569_poprawazamowienia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601241431025_poprawazamowienia2.cs" />
+    <Compile Include="Migrations\201601241431025_poprawazamowienia2.Designer.cs">
+      <DependentUpon>201601241431025_poprawazamowienia2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -529,6 +533,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601241328569_poprawazamowienia.resx">
       <DependentUpon>201601241328569_poprawazamowienia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601241431025_poprawazamowienia2.resx">
+      <DependentUpon>201601241431025_poprawazamowienia2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

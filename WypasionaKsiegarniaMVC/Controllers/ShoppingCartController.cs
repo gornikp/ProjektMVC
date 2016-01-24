@@ -143,12 +143,20 @@ namespace WypasionaKsiegarniaMVC.Controllers
             List<CartItem> cart = (List<CartItem>)Session["cart"];
 
             Cart koszyk = new Cart();
+            Product p = null;
 
             foreach (CartItem item in cart)
             {
-                //db.Products.
+                p = item.Product;
+               // p = db.Products.Where(x => x.ProductID == item.ProductID).FirstOrDefault<Product>();
+                if (p != null)
+                {
+                    p.StockAmount -= item.Quantity;
+                    db.Entry(p).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
-
+            
             foreach (CartItem item in cart)
             {
                 item.DateCreated = DateTime.Now;
@@ -163,7 +171,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
             zamowienie.Cart = koszyk;
             zamowienie.userId = User.Identity.GetUserId();
             zamowienie.CardNumber = card;
-            zamowienie.Address = adres;
+            //zamowienie.Address = adres;
             db.Orders.Add(zamowienie);
             await db.SaveChangesAsync();
 

@@ -7,9 +7,9 @@ namespace WypasionaKsiegarniaMVC.Models
     {
        
         [Key]
-        public string ItemID { get; set; }
+        public int ItemID { get; set; }
 
-        public string CartID { get; set; }
+        public int CartID { get; set; }
 
         public System.DateTime DateCreated { get; set; }
 
