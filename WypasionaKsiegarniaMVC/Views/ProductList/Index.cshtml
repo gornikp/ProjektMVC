@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <h2>Index</h2>
+    <h2>Product List</h2>
     <table cellpadding="8" cellspacing="10" class="table">
 
         <tr>
@@ -32,7 +32,7 @@
                 <th> @p.ISBN </th>
                 <th> @p.Title </th>
                 <th> @p.Price zł</th>
-                @using (Html.BeginForm("OrderNow", "ShoppingCart", FormMethod.Get))
+                @using (Html.BeginForm("OrderNow", "ShoppingCart", FormMethod.Post))
                 {
                 <th>
                    
@@ -41,7 +41,7 @@
                     
                </th>
                <th>
-                <button type="submit" class="btn btn-danger">Dodaj</button>
+                <button type="submit" class="btn btn-danger">Add</button>
                     </th>}
                 
             </tr>

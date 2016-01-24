@@ -33,13 +33,24 @@
                 <th>@item.Product.Price</th>
                 <th>@item.Quantity</th>
                 <th>@(item.Quantity * item.Product.Price) zł</th>   
-                <th style="border:none">@Html.ActionLink("delete", "Remove", "ShoppingCart", new { id = item.Product.ProductID, quantity = item.Quantity },new { @class = "btn btn-danger" })</th>            
+                <th style="border:none">
+                 @using (Html.BeginForm("Remove", "ShoppingCart", FormMethod.Post))
+                 {
+                    @Html.Hidden("id", item.Product.ProductID)
+                    @Html.Hidden("quantity", item.Quantity)
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                 }
+
+
+
+        @*@Html.ActionLink("delete", "Remove", "ShoppingCart", new { id = item.Product.ProductID, quantity = item.Quantity }, new { @class = "btn btn-danger" })*@
+    </th>
             </tr>
         }
         }
         <tr>
             <th></th><th></th><th></th><th align="right">Sum: </th>
-            <td>@s</td>
+            <td>@s zł</td>
         </tr>
     </table>
     <br /><br />

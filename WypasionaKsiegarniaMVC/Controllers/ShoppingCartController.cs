@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using System.Web.Mvc;
 using WypasionaKsiegarniaMVC.Models;
+using System.Runtime.InteropServices;
 
 namespace WypasionaKsiegarniaMVC.Controllers
 {
@@ -15,6 +16,9 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
+            IdentityManager elo = new IdentityManager();
+
+            
             return View("Cart");
         }
         public ActionResult CartBin()
@@ -43,8 +47,12 @@ namespace WypasionaKsiegarniaMVC.Controllers
             return -1;
 
         }
-        public ActionResult OrderNow(int id, int quantity) //Add to cart
+        public ActionResult OrderNow([Optional]int id, [Optional]int quantity) //Add to cart
         {
+            if(quantity == 0 || id == 0)
+            {
+                return View("Cart");
+            }
 
             if (Session["cart"]==null)
             {
@@ -66,30 +74,34 @@ namespace WypasionaKsiegarniaMVC.Controllers
             }
             return View("Cart");
         }
-        public ActionResult OrderNow2(int id,int amount) //Add to cart
+        public ActionResult OrderNow2(int? id,int? amount) //Add to cart
         {
+            if (amount == null || id == null)
+            {
+                return View("Cart");
+            }
 
             if (Session["cart"] == null)
             {
 
                 List<CartItem> cart = new List<CartItem>();
-                cart.Add(new CartItem(db.Products.Find(id), amount));
+                cart.Add(new CartItem(db.Products.Find(id), (int)amount));
                 Session["cart"] = cart;
 
             }
             else
             {            
                 List<CartItem> cart = (List<CartItem>)Session["cart"];
-                int index = isExisting(id);
+                int index = isExisting((int)id);
                 if (index == -1)
-                    cart.Add(new CartItem(db.Products.Find(id), amount));
+                    cart.Add(new CartItem(db.Products.Find(id), (int)amount));
                 else
-                    cart[index].Quantity += amount;
+                    cart[index].Quantity += (int)amount;
                 Session["cart"] = cart;
             }
             List<CartItem> cart2 = new List<CartItem>();
             cart2 = (List<CartItem>)Session["cartbin"];
-            int index2 = isExisting2(id);
+            int index2 = isExisting2((int)id);
             cart2.RemoveAt(index2);
             return View("Cart");
         }
