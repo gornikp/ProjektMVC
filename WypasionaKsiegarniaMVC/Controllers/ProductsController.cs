@@ -18,7 +18,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // GET: Products
         public async Task<ActionResult> Index()
         {
-            var products = db.Products.Include(p => p.Category);
+            var products = db.Products.Include(p => p.Category).Include(p=>p.Authors);
             return View(await products.ToListAsync());
         }
 

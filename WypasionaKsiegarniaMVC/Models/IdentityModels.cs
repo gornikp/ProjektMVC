@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Collections;
 
 namespace WypasionaKsiegarniaMVC.Models
 {
@@ -45,7 +46,7 @@ namespace WypasionaKsiegarniaMVC.Models
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Address> Adresses { get; set; }
-
+        public IEnumerable ApplicationUsers { get; internal set; }
 
         public static ApplicationDbContext Create()
         {

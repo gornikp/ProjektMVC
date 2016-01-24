@@ -134,26 +134,21 @@ namespace WypasionaKsiegarniaMVC.Controllers
             return View("CartBin");
         }
 
-        public async System.Threading.Tasks.Task<ActionResult> MakeAnOrder(Address adres)
+        public ActionResult MakeAnOrder(Address adres)
         {
-            long card = 1;
             ApplicationDbContext db = new ApplicationDbContext();
 
 
             List<CartItem> cart = (List<CartItem>)Session["cart"];
 
             Cart koszyk = new Cart();
-            Product p = null;
-
             foreach (CartItem item in cart)
             {
-                p = item.Product;
-               // p = db.Products.Where(x => x.ProductID == item.ProductID).FirstOrDefault<Product>();
-                if (p != null)
+                var e = db.Products.Where(x => x.ProductID == item.ProductID).FirstOrDefault();
+                if (e != null)
                 {
-                    p.StockAmount -= item.Quantity;
-                    db.Entry(p).State = EntityState.Modified;
-                    db.SaveChanges();
+                    e.StockAmount -= item.Quantity;                
+                        //db.SaveChanges();
                 }
             }
             
@@ -165,15 +160,16 @@ namespace WypasionaKsiegarniaMVC.Controllers
             koszyk.CartItems = cart;
             koszyk.userId = User.Identity.GetUserId();
             db.Cart.Add(koszyk);
-            await db.SaveChangesAsync();
+            //db.SaveChanges();
             Order zamowienie = new Order();
 
             zamowienie.Cart = koszyk;
             zamowienie.userId = User.Identity.GetUserId();
-            //zamowienie.CardNumber = card;
-            //zamowienie.Address = adres;
+            zamowienie.status = "Nowe";
+             Address query = db.Adresses.Where(x => x.userId == User.Identity.GetUserId()).FirstOrDefault<Address>();
+            zamowienie.Address = query;
             db.Orders.Add(zamowienie);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
 
 
             return View("CartBin");
