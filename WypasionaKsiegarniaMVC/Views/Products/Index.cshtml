@@ -23,6 +23,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Authors)
+        </th>
         @*<th>
             @Html.DisplayNameFor(model => model.Language)
         </th>*@
@@ -64,6 +67,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
+        <th>
+            @Html.ListBox("AuthorId", new SelectList(item.Authors, "AuthorId", "Name"))
+        </th>
         @*<td>
             @Html.DisplayFor(modelItem => item.Language)
         </td>*@
@@ -97,10 +103,10 @@
         <td>
             @Html.ActionLink("Details", "Details", new { id = item.ProductID },new {  @class = "btn btn-warning" })
             
-            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-            {
+            
+            
                 @Html.ActionLink("Edit", "Edit", new { id=item.ProductID },new { @class = "btn btn-danger"  })  
-            }
+            
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
                 @Html.ActionLink("Delete", "Delete", new { id=item.ProductID },new { @class = "btn btn-primary" })
