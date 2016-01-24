@@ -197,6 +197,7 @@
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\PicturesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -470,6 +471,12 @@
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Pictures\Create.cshtml" />
+    <Content Include="Views\Pictures\Delete.cshtml" />
+    <Content Include="Views\Pictures\Details.cshtml" />
+    <Content Include="Views\Pictures\Edit.cshtml" />
+    <Content Include="Views\Pictures\Index.cshtml" />
+    <Content Include="Views\Products\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Orders1\" />

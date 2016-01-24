@@ -1,0 +1,122 @@
+﻿@model IEnumerable<WypasionaKsiegarniaMVC.Models.Product>
+
+@using Microsoft.AspNet.Identity;
+<link href="~/Content/PagedList.css" rel="stylesheet"
+      type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Books</h2>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) {
+
+    <p>        
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+}
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Authors)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Language)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.PageAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Format)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StockAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Featured)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Hidden)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ISBN)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <th>
+            @Html.ListBox("AuthorId", new SelectList(item.Authors, "Name", "NameSurname"), new { style = "width: 100%;" })
+        </th>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Language)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Publisher)
+        </td>
+        @*@<td>
+            @Html.DisplayFor(modelItem => item.PageAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Format)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StockAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Featured)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Hidden)
+        </td>*@
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.ProductID },new {  @class = "btn btn-warning" })
+            
+            
+            
+                @Html.ActionLink("Edit", "Edit", new { id=item.ProductID },new { @class = "btn btn-danger"  })  
+            
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Delete", "Delete", new { id=item.ProductID },new { @class = "btn btn-primary" })
+            }
+            
+          
+
+
+        </td>
+    </tr>
+}
+
+</table>

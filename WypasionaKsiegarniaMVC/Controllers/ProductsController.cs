@@ -18,8 +18,13 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // GET: Products
         public async Task<ActionResult> Index()
         {
-            var products = db.Products.Include(p => p.Category).Include(p=>p.Authors);
+            var products = db.Products.Include(p => p.Category).Include(p=>p.Authors).Where(p=>p.Hidden==false);
             return View(await products.ToListAsync());
+        }
+        public ActionResult List()
+        {
+            var products = db.Products.Include(p => p.Category).Include(p => p.Authors);
+            return View(products.ToList());
         }
 
         // GET: Products/Details/5
