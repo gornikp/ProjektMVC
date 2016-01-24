@@ -170,7 +170,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
 
             zamowienie.Cart = koszyk;
             zamowienie.userId = User.Identity.GetUserId();
-            zamowienie.CardNumber = card;
+            //zamowienie.CardNumber = card;
             //zamowienie.Address = adres;
             db.Orders.Add(zamowienie);
             await db.SaveChangesAsync();
