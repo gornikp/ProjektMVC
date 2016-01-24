@@ -11,7 +11,7 @@
 <body>
     <h2>CartBin</h2>
     <h2>Index</h2>
-    <table cellpadding="2" cellspacing="2" border="1">
+    <table class="table-condensed">
         <tr>
             <th>ISBN</th>
             <th>Product</th>
@@ -33,12 +33,15 @@
                 <th>@item.Product.Price</th>
                 <th>@item.Quantity</th>
                 <th>@(item.Quantity * item.Product.Price) zł</th>
-                <th>@Html.ActionLink("Order Now", "OrderNow2", "ShoppingCart", new { id = item.Product.ProductID, amount = item.Quantity }, null)</th>
+                <th>@Html.ActionLink("Order Now", "OrderNow2", "ShoppingCart", new { id = item.Product.ProductID, amount = item.Quantity }, new { @class = "btn btn-warning" })</th>
             </tr>
             }
         }
         <tr>
-            <th align="left" colspan="4">Sum</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th align="right">Sum: </th>
             <td>@s</td>
         </tr>
     </table>

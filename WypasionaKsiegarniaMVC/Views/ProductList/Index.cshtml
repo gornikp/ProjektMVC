@@ -15,7 +15,7 @@
 
 <body>
     <h2>Index</h2>
-    <table cellpadding="8" cellspacing="10">
+    <table cellpadding="8" cellspacing="10" class="table">
 
         <tr>
 
@@ -23,6 +23,7 @@
             <th>Title </th>
             <th>Product</th>
             <th>Quantity</th>
+            <th></th>
 
         </tr>
         @foreach (Product p in ViewBag.listProducts)
@@ -30,28 +31,24 @@
             <tr>
                 <th> @p.ISBN </th>
                 <th> @p.Title </th>
-                <th> @p.Price </th>
+                <th> @p.Price zł</th>
+                @using (Html.BeginForm("OrderNow", "ShoppingCart", FormMethod.Get))
+                {
+                <th>
+                   
+                        @Html.TextBox("quantity", null, new { type = "number", style = "width:35px", min = "0", @Value="1" })
+                        @Html.Hidden("id", p.ProductID)
+                    
+               </th>
+               <th>
+                <button type="submit" class="btn btn-danger">Dodaj</button>
+                    </th>}
                 
-                <th>Qty:<div class="DetailAddToCart"><input type="number" value="1" class="Quantity" id="Quantity" width="1"/> <a id="AddToCartLink" href="@Url.Action("OrderNow", "ShoppingCart", new {id = p.ProductID})">AddToCart</a></div></th>
-                <td align="center">@Html.ActionLink("Order Now", "OrderNow", "ShoppingCart", new { id = p.ProductID }, null)</td>    
             </tr>
         }
 
     </table>
     <script>
-        $('#AddToCartLink').click(function () {
-            var link = $(this).attr('href') + '?quantity=' + $(this).siblings('.Quantity').val();
-
-            $.ajax({
-                url: link,
-                type: "POST",
-                success: AddToCartSuccess,
-                error: AddToCartFailure
-            });
-
-            return false;
-
-        });
     </script>
 </body>
 
