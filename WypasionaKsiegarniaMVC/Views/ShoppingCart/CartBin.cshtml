@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Cart";
+    ViewBag.Title = "CartBin";
 }
 @using WypasionaKsiegarniaMVC.Models;
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <h2>Cart</h2>
+    <h2>CartBin</h2>
     <h2>Index</h2>
     <table cellpadding="2" cellspacing="2" border="1">
         <tr>
@@ -20,34 +20,32 @@
             <th>Sub Total</th>
         </tr>
         @{
-        double s = 0;
+            double s = 0;
         }
-        @if ((List<CartItem>)Session["cart"] != null)
+        @if ((List<CartItem>)Session["cartbin"] != null)
         {
-        foreach (CartItem item in (List<CartItem>)Session["cart"])
-        {
-            s += item.Product.Price * item.Quantity;
+            foreach (CartItem item in (List<CartItem>)Session["cartbin"])
+            {
+                s += item.Product.Price * item.Quantity;
             <tr>
                 <th>@item.Product.ISBN</th>
                 <th>@item.Product.Title</th>
                 <th>@item.Product.Price</th>
                 <th>@item.Quantity</th>
-                <th>@(item.Quantity * item.Product.Price) zł</th>   
-                <th>@Html.ActionLink("delete", "Remove", "ShoppingCart", new { id = item.Product.ProductID,quantity = item.Quantity }, null)</th>            
+                <th>@(item.Quantity * item.Product.Price) zł</th>
+                <th>@Html.ActionLink("Order Now", "OrderNow2", "ShoppingCart", new { id = item.Product.ProductID, amount = item.Quantity }, null)</th>
             </tr>
-        }
+            }
         }
         <tr>
-            <th align="left" colspan="4" >Sum</th>
+            <th align="left" colspan="4">Sum</th>
             <td>@s</td>
         </tr>
     </table>
     <br /><br />
     @Html.ActionLink("Continue Shopping", "Index", "ProductList")
     <br /><br />
-    @Html.ActionLink("See Cart Bin", "CartBin", "ShoppingCart")
+    @Html.ActionLink("Cart", "Index", "ShoppingCart")
 </body>
 
 </html>
-
-
