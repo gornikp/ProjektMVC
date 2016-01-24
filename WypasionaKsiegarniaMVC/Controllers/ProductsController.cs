@@ -47,6 +47,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
+            ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "Name","NameSurname");
             return View();
         }
 

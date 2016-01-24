@@ -1,13 +1,55 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+@using WypasionaKsiegarniaMVC.Models;
 <div class="jumbotron">
     <h1>Awesome Bookshop</h1>
     <p class="lead">TODO: put some stuff inside, like books, news, discounts or so.</p>
 </div>
 
 <div class="row">
+    <h2>Featured</h2>
+    <table cellpadding="8" cellspacing="10" class="table">
+
+        <tr>
+
+            <th>ISBN</th>
+            <th>Title </th>
+            <th>Author</th>
+            <th>Quantity</th>
+            <th></th>
+
+        </tr>
+        @foreach (Product p in ViewBag.listProducts)
+        {
+            <tr>
+                <th> @p.ISBN </th>
+                <th> @p.Title </th>
+                <th>
+                    @foreach (Author a in p.Authors)
+                {
+                    @a.Name<a> </a>@a.NameSurname<br />
+                }
+            </th>
+            <th> @p.Price zł</th>
+            @using (Html.BeginForm("OrderNow", "ShoppingCart", FormMethod.Post))
+                {
+                <th>
+
+                    @Html.TextBox("quantity", null, new { type = "number", style = "width:35px", min = "0", @Value = "1" })
+                    @Html.Hidden("id", p.ProductID)
+
+                </th>
+                        <th>
+                            <button type="submit" class="btn btn-danger">Add</button>
+                        </th>}
+
+        </tr>
+        }
+
+    </table>
+
     <div class="col-md-4">
-        
+
+        </div>
 </div>
