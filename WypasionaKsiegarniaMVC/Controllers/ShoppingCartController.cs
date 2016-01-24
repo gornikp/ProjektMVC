@@ -5,6 +5,8 @@ using System.Web;
 using System.Data.Entity;
 using System.Web.Mvc;
 using WypasionaKsiegarniaMVC.Models;
+using System.Runtime.InteropServices;
+using Microsoft.AspNet.Identity;
 
 namespace WypasionaKsiegarniaMVC.Controllers
 {
@@ -15,6 +17,9 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
+            IdentityManager elo = new IdentityManager();
+
+            
             return View("Cart");
         }
         public ActionResult CartBin()
@@ -43,8 +48,12 @@ namespace WypasionaKsiegarniaMVC.Controllers
             return -1;
 
         }
-        public ActionResult OrderNow(int id, int quantity) //Add to cart
+        public ActionResult OrderNow([Optional]int id, [Optional]int quantity) //Add to cart
         {
+            if(quantity == 0 || id == 0)
+            {
+                return View("Cart");
+            }
 
             if (Session["cart"]==null)
             {
@@ -66,34 +75,38 @@ namespace WypasionaKsiegarniaMVC.Controllers
             }
             return View("Cart");
         }
-        public ActionResult OrderNow2(int id,int amount) //Add to cart
+        public ActionResult OrderNow2(int? id,int? amount) //Add to cart afyer removal
         {
+            if (amount == null || id == null)
+            {
+                return View("Cart");
+            }
 
             if (Session["cart"] == null)
             {
 
                 List<CartItem> cart = new List<CartItem>();
-                cart.Add(new CartItem(db.Products.Find(id), amount));
+                cart.Add(new CartItem(db.Products.Find(id), (int)amount));
                 Session["cart"] = cart;
 
             }
             else
             {            
                 List<CartItem> cart = (List<CartItem>)Session["cart"];
-                int index = isExisting(id);
+                int index = isExisting((int)id);
                 if (index == -1)
-                    cart.Add(new CartItem(db.Products.Find(id), amount));
+                    cart.Add(new CartItem(db.Products.Find(id), (int)amount));
                 else
-                    cart[index].Quantity += amount;
+                    cart[index].Quantity += (int)amount;
                 Session["cart"] = cart;
             }
             List<CartItem> cart2 = new List<CartItem>();
             cart2 = (List<CartItem>)Session["cartbin"];
-            int index2 = isExisting2(id);
+            int index2 = isExisting2((int)id);
             cart2.RemoveAt(index2);
             return View("Cart");
         }
-        public ActionResult Remove(int id,int quantity) //Add to cart
+        public ActionResult Remove(int id,int quantity) //remove from cart
         {
             int index = isExisting(id);
             List<CartItem> cart = (List<CartItem>)Session["cart"];
@@ -119,6 +132,43 @@ namespace WypasionaKsiegarniaMVC.Controllers
             cart.RemoveAt(index);
             Session["cart"] = cart;
             return View("CartBin");
-        }     
+        }
+
+        public async System.Threading.Tasks.Task<ActionResult> MakeAnOrder(Address adres)
+        {
+            long card = 1;
+            ApplicationDbContext db = new ApplicationDbContext();
+
+
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
+
+            Cart koszyk = new Cart();
+
+            foreach (CartItem item in cart)
+            {
+                //db.Products.
+            }
+
+            foreach (CartItem item in cart)
+            {
+                item.DateCreated = DateTime.Now;
+                db.CartItems.Add(item);
+            }
+            koszyk.CartItems = cart;
+            koszyk.userId = User.Identity.GetUserId();
+            db.Cart.Add(koszyk);
+            await db.SaveChangesAsync();
+            Order zamowienie = new Order();
+
+            zamowienie.Cart = koszyk;
+            zamowienie.userId = User.Identity.GetUserId();
+            zamowienie.CardNumber = card;
+            zamowienie.Address = adres;
+            db.Orders.Add(zamowienie);
+            await db.SaveChangesAsync();
+
+
+            return View("CartBin");
+        }
     }
 }

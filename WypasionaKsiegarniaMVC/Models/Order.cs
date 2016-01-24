@@ -21,7 +21,8 @@ namespace WypasionaKsiegarniaMVC.Models
 
         public string userId { get; set; }
 
-        public string AddressID { get; set; }
+        public int AddressID { get; set; }
+        public int CartID { get; set; }
 
         public virtual ApplicationUser User { get; set; }
 
