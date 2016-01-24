@@ -4,9 +4,13 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WypasionaKsiegarniaMVC.Models;
+
+
+
 
 namespace WypasionaKsiegarniaMVC.Controllers
 {
@@ -18,10 +22,36 @@ namespace WypasionaKsiegarniaMVC.Controllers
         public ActionResult Index()
         {
             var users = db.Users.ToList();
-
             return View(users);
-            //return View(db.ApplicationUsers.ToList());
+
+
         }
+
+        // GET: ApplicationUsers/User/5
+      /*  public ActionResult User(String? id)
+        {
+            
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            /// ApplicationUser user = db.Users.Find(id);
+
+        
+            int _id = Convert.ToInt32(id);
+            var u = db.Users.Where(x => x.Id == _id).SingleOrDefault();
+
+            return View(u);
+
+        }*/
+
+
+
+
+
+      
+
 
         //// GET: ApplicationUsers/Details/5
         //public ActionResult Details(string id)
