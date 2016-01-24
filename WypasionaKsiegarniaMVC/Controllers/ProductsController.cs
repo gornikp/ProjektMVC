@@ -49,7 +49,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProductID,ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description,CategoryID")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "ProductID,ISBN,Title,Authors,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description,CategoryID")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,6 @@ namespace WypasionaKsiegarniaMVC.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", product.CategoryID);
             return View(product);
         }
@@ -93,10 +92,10 @@ namespace WypasionaKsiegarniaMVC.Controllers
             }
 
             var allAuthorsList = db.Authors.ToList();
-            productAuthorViewModel.AllAuthorsList = allAuthorsList.Select(i => new SelectListItem { Text = i.Name, Value=i.AuthorsID.ToString() });
+            productAuthorViewModel.AllAuthorsList = allAuthorsList.Select(i => new SelectListItem { Text = i.Name + " " + i.NameSurname, Value=i.AuthorsID.ToString() });
 
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", productAuthorViewModel.Product.CategoryID);
-            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorsId", "Name", productAuthorViewModel.Product.ProductID);
+            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorsId", "Name", "NameSurname",  productAuthorViewModel.Product.ProductID);
             return View(productAuthorViewModel);
         }
 
@@ -105,7 +104,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductID,ISBN,Title,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description,CategoryID")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "ProductID,ISBN,Title,Authors,Language,Price,Year,Publisher,PageAmount,Format,StockAmount,Featured,Discount,Hidden,Description,CategoryID")] Product product)
         {
             if (ModelState.IsValid)
             {
