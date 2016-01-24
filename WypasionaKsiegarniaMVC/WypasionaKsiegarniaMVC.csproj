@@ -453,11 +453,6 @@
     <Content Include="Views\ShoppingCart\Cart.cshtml" />
     <Content Include="Views\Account\CreateAdress.cshtml" />
     <Content Include="Views\Account\TogetherRegisterAndAdress.cshtml" />
-    <Content Include="Views\Files\Create.cshtml" />
-    <Content Include="Views\Files\Delete.cshtml" />
-    <Content Include="Views\Files\Details.cshtml" />
-    <Content Include="Views\Files\Edit.cshtml" />
-    <Content Include="Views\Files\Index.cshtml" />
     <Content Include="Views\ShoppingCart\CartBin.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
@@ -476,10 +471,15 @@
     <Content Include="Views\Pictures\Edit.cshtml" />
     <Content Include="Views\Pictures\Index.cshtml" />
     <Content Include="Views\Products\List.cshtml" />
+    <Content Include="Views\Products\Featured.cshtml" />
+    <Content Include="Views\Files\Create.cshtml" />
+    <Content Include="Views\Files\Delete.cshtml" />
+    <Content Include="Views\Files\Details.cshtml" />
+    <Content Include="Views\Files\Edit.cshtml" />
+    <Content Include="Views\Files\Index.cshtml" />
+    <Content Include="Views\Home\Userpanel.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Orders1\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

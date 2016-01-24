@@ -70,6 +70,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         }
 
         // GET: Products/Featured
+        [ValidateInput(false)]
         public ActionResult Featured()
         {
             int maxId = db.Products.Max(i => i.ProductID);

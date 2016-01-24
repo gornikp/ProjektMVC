@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "UserPanel";
+}
+@using WypasionaKsiegarniaMVC.Models;
+@model IEnumerable<WypasionaKsiegarniaMVC.Models.Order>
+
+    <!DOCTYPE html>
+
+    <html>
+
+    <head>
+
+        <meta name="viewport" content="width=device-width" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+        @*@foreach (Order o in ViewBag.order)
+             {
+            <table cellpadding="8" cellspacing="10" class="table">
+            <tr>
+            <th>numer koszyka</th>
+            <th>Title </th>
+            <th>Quantity</th>
+            <th>data</th>
+            <th>status</th>
+            <th></th>
+             </tr>
+            @foreach (CartItem p in o.Cart.CartItems)
+            {
+            <tr>
+                <th> @o.CartID</th>
+                <th> @Html.DisplayFor(m => p.Product.Title)</th>
+                <th> @p.Quantity </th>
+                <th> @p.DateCreated</th>
+                <th> @o.status</th>
+                </tr>
+                 }
+                </table>
+                 }*@
+<table>
+@*@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+@foreach (var item2 in item.Cart)
+{
+        <td>
+            @Html.DisplayFor(modelItem2 => item2.User.UserName)
+        </td>
+}
+    </tr>
+}</table>*@
+
+        <script>
+        </script>
+    </body>
+
+</html>
+
+
+
+@*@using (Html.BeginForm("OrderNow", "ShoppingCart", FormMethod.Post))
+    {
+        <th>
+
+            @Html.TextBox("quantity", null, new { type = "number", style = "width:35px", min = "0", @Value = "1" })
+            @Html.Hidden("id", p.ProductID)
+
+        </th>
+                        <th>
+                            <button type="submit" class="btn btn-danger">Add</button>
+                        </th>}*@

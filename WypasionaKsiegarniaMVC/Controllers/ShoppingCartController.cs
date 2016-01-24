@@ -137,7 +137,6 @@ namespace WypasionaKsiegarniaMVC.Controllers
 
         public ActionResult MakeAnOrder(Address adres)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
 
 
             List<CartItem> cart = (List<CartItem>)Session["cart"];
@@ -156,18 +155,19 @@ namespace WypasionaKsiegarniaMVC.Controllers
             foreach (CartItem item in cart)
             {
                 item.DateCreated = DateTime.Now;
-                db.CartItems.Add(item);
+                //db.CartItems.Add(item);
             }
             koszyk.CartItems = cart;
             koszyk.userId = User.Identity.GetUserId();
-            db.Cart.Add(koszyk);
+            //db.Cart.Add(koszyk);
             //db.SaveChanges();
             Order zamowienie = new Order();
 
             zamowienie.Cart = koszyk;
             zamowienie.userId = User.Identity.GetUserId();
             zamowienie.status = "Nowe";
-             Address query = db.Adresses.Where(x => x.userId == User.Identity.GetUserId()).FirstOrDefault<Address>();
+            string user = User.Identity.GetUserId();
+             Address query = db.Adresses.Where(x => x.userId == user).FirstOrDefault<Address>();
             zamowienie.Address = query;
             db.Orders.Add(zamowienie);
             db.SaveChanges();

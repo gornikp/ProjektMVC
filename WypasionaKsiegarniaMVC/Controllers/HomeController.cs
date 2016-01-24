@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WypasionaKsiegarniaMVC.Models;
+using Microsoft.AspNet.Identity;
 
 namespace WypasionaKsiegarniaMVC.Controllers
 {
@@ -15,7 +20,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.listProducts = db.Products.Where(x=>x.Featured== true).ToList();
+            ViewBag.listProducts = db.Products.Where(x => x.Featured == true).ToList();
 
             return View();
         }
@@ -55,5 +60,15 @@ namespace WypasionaKsiegarniaMVC.Controllers
             return RedirectToAction("Index", "Home");
 
         }
-    }
+    
+             public ActionResult Userpanel()
+             {
+            string idd = User.Identity.GetUserId().ToString();
+            var orders = db.Orders.Include(o => o.Cart).Where(o=>o.userId==idd);
+            var ddad = db.Orders.Where(o => o.userId == idd).Include(o=>o.User).Include(o => o.Cart);
+            ViewBag.order = ddad;
+            return View();
+             }
+
+}
 }
