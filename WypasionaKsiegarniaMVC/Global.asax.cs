@@ -9,9 +9,11 @@ using System.Web.Routing;
 namespace WypasionaKsiegarniaMVC
 {
     public class MvcApplication : System.Web.HttpApplication
-    {    
+    {
+        public static string theme { set; get; }
         protected void Application_Start()
         {
+            theme = "bootstrap.min.css";
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -50,5 +52,6 @@ namespace WypasionaKsiegarniaMVC
             Application["OnlineUserCounter"] = Convert.ToInt32(Application["OnlineUserCounter"]) - 1;
             Application.UnLock();
         }
+
     }
 }
