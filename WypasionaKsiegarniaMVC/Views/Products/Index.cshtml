@@ -68,7 +68,7 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <th>
-            @Html.ListBox("AuthorId", new SelectList(item.Authors, "AuthorId", "Name"))
+            @Html.ListBox("AuthorId", new SelectList(item.Authors, "Name", "NameSurname"), new { style = "width: 100%;" })
         </th>
         @*<td>
             @Html.DisplayFor(modelItem => item.Language)
