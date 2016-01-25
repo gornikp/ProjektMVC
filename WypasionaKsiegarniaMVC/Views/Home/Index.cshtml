@@ -31,20 +31,23 @@
                 }
             </th>
             <th> @p.Price zł</th>
+
             @using (Html.BeginForm("OrderNow", "ShoppingCart", FormMethod.Post))
-                {
-                <th>
+       {
+       <th>
 
-                    @Html.TextBox("quantity", null, new { type = "number", style = "width:35px", min = "0", @Value = "1" })
-                    @Html.Hidden("id", p.ProductID)
+           @Html.TextBox("quantity", null, new { type = "number", style = "width:35px", min = "0", @Value = "1" })
+           @Html.Hidden("id", p.ProductID)
 
-                </th>
-                        <th>
-                            <button type="submit" class="btn btn-danger">Add</button>
-                        </th>}
+       </th>
 
-        </tr>
-        }
+               <th>
+                   <button type="submit" class="btn btn-danger">Add</button>
+               </th>}
+
+
+    </tr>
+            }
 
     </table>
 
