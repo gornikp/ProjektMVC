@@ -61,12 +61,15 @@ namespace WypasionaKsiegarniaMVC.Controllers
             ViewBag.Message = "Nice too meet you!";
             if (ModelState.IsValid)
             {
-                var body = "<h2>Email From: {0} ({1})</h2></br><p>Message:</p><p>{2}</p>";
+                var body = "";
+                if (!string.IsNullOrEmpty(model.AboutProduct)) body = "<h2>Email From: {0} ({1})</h2></br><p>Message concerning {2}:</p><p>{3}</p>";
+                else body = "<h2>Email From: {0} ({1})</h2></br><p>Message:</p><p>{3}</p>";
+
                 var message = new MailMessage();
                 message.To.Add(new MailAddress("weronika.sawicka.9@gmail.com"));
                 message.From = new MailAddress("weronika.sawicka.9@gmail.com");
                 message.Subject = "Your email subject";
-                message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
+                message.Body = string.Format(body, model.FromName, model.FromEmail, model.AboutProduct, model.Message);
                 message.IsBodyHtml = true;
 
                 using (var smtp = new SmtpClient())

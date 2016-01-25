@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using WypasionaKsiegarniaMVC.Models;
 using System.Runtime.InteropServices;
 using Microsoft.AspNet.Identity;
+using System.Net.Mail;
+using System.Net;
 
 namespace WypasionaKsiegarniaMVC.Controllers
 {
@@ -135,7 +137,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
             return View("CartBin");
         }
 
-        public ActionResult MakeAnOrder(Address adres)
+        public async System.Threading.Tasks.Task<ActionResult> MakeAnOrder(Address adres)
         {
             List<CartItem> cart = (List<CartItem>)Session["cart"];
 
@@ -145,11 +147,44 @@ namespace WypasionaKsiegarniaMVC.Controllers
                 var e = db.Products.Where(x => x.ProductID == item.ProductID).FirstOrDefault();
                 if (e != null)
                 {
-                    e.StockAmount -= item.Quantity;                
-                        db.SaveChanges();
+                    e.StockAmount -= item.Quantity;
+                    db.SaveChanges();
                 }
             }
+
+            //sending email
+            String messageText = "";
+            foreach (CartItem item in cart)
+            {
+                messageText += item.GetString();
+            }
+                var body = "<h2>Email From: {0} about rented products ({1})</h2></br><p>Message:</p><p>{2}</p>";
+                var message = new MailMessage();
+                string userName = User.Identity.GetUserName();
+
+                message.To.Add(new MailAddress(userName));
+                message.From = new MailAddress("weronika.sawicka.9@gmail.com");
+                message.Subject = "Your email subject";
+                message.Body = string.Format(body, "Awesome bookshop", "", messageText);
+                message.IsBodyHtml = true;
+
+                using (var smtp = new SmtpClient())
+                {
+                    var credential = new NetworkCredential
+                    {
+                        UserName = "weronika.sawicka.9@gmail.com",
+                        Password = "Ptaszysko04464"
+                    };
+                    smtp.Credentials = credential;
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    await smtp.SendMailAsync(message);
+                }
             
+            System.Threading.Thread.Sleep(10000);
+
+
             foreach (CartItem item in cart)
             {
                 item.DateCreated = DateTime.Now;
@@ -165,7 +200,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
             zamowienie.userId = User.Identity.GetUserId();
             zamowienie.status = "Nowe";
             string user = User.Identity.GetUserId();
-             Address query = db.Adresses.Where(x => x.userId == user).FirstOrDefault<Address>();
+            Address query = db.Adresses.Where(x => x.userId == user).FirstOrDefault<Address>();
             zamowienie.Address = query;
             db.Orders.Add(zamowienie);
             db.SaveChanges();
@@ -173,7 +208,6 @@ namespace WypasionaKsiegarniaMVC.Controllers
 
             return View("CartBin");
         }
-
 
 
         public ActionResult OrderAgain(int id2)
