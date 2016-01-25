@@ -5,11 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using WypasionaKsiegarniaMVC.Models;
 
+
 namespace WypasionaKsiegarniaMVC.Controllers
 {
     public class AddProductController : Controller
     {
         private List<Product> products = new List<Product>();
+   
+
 
         // GET: AddProduct
         public ActionResult List()
@@ -94,5 +97,8 @@ namespace WypasionaKsiegarniaMVC.Controllers
             products.Remove(product);
             return RedirectToAction("List");
         }
+
+
+
     }
 }

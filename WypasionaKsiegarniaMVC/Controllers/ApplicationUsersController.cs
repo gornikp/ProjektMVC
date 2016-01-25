@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WypasionaKsiegarniaMVC.Models;
+using Microsoft.AspNet.Identity;
 
 
 
@@ -19,32 +20,35 @@ namespace WypasionaKsiegarniaMVC.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ApplicationUsers
-        public ActionResult Index()
-        {
+         public ActionResult Index()
+          {
             var users = db.Users.ToList();
-            return View(users);
+             return View(users);
+          
+          }
+          
 
+        // GET: ApplicationUsers
+        public async Task<ActionResult> Index2()
+        {
+            var user = db.Users.Include(o => o.Id).Include(o => o.Roles);
+            return View(await user.ToListAsync());
+        }
+       
+
+
+        public ActionResult Userr()
+        {
+           
+                string idd = User.Identity.GetUserId().ToString();
+                var user = db.Users.Where(o => o.Id == idd);
+              
+                ViewBag.order = user;
+                return View();  
 
         }
 
-        // GET: ApplicationUsers/User/5
-      /*  public ActionResult User(String? id)
-        {
-            
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
 
-            /// ApplicationUser user = db.Users.Find(id);
-
-        
-            int _id = Convert.ToInt32(id);
-            var u = db.Users.Where(x => x.Id == _id).SingleOrDefault();
-
-            return View(u);
-
-        }*/
 
 
 

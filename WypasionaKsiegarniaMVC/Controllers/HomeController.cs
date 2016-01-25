@@ -114,12 +114,20 @@ namespace WypasionaKsiegarniaMVC.Controllers
     
              public ActionResult Userpanel()
              {
-            string idd = User.Identity.GetUserId().ToString();
-            var orders = db.Orders.Include(o => o.Cart).Where(o=>o.userId==idd);
-            var ddad = db.Orders.Where(o => o.userId == idd).Include(o=>o.User).Include(o => o.Cart).Include(o=>o.Cart.CartItems);
-            ViewBag.order = ddad;
-            return View();
-             } 
+                    string idd = User.Identity.GetUserId().ToString();
+                    var orders = db.Orders.Include(o => o.Cart).Where(o=>o.userId==idd);
+                    var ddad = db.Orders.Where(o => o.userId == idd).Include(o=>o.User).Include(o => o.Cart).Include(o=>o.Cart.CartItems);
+                    ViewBag.order = ddad;
+                    return View();
+             }
+
+
+             // GET: ApplicationUsers
+             public ActionResult UsersRole()
+             {
+                 var users = db.Users.Include(o => o.Id).Include(o => o.Roles);
+                 return View(users.ToList());
+             }
 
     }
 }

@@ -34,6 +34,9 @@
                 <th>@item.Quantity</th>
                 <th>@(item.Quantity * item.Product.Price) zł</th>
                 <th>@Html.ActionLink("Order Now", "OrderNow2", "ShoppingCart", new { id = item.Product.ProductID, amount = item.Quantity }, new { @class = "btn btn-warning" })</th>
+
+              
+
             </tr>
             }
         }

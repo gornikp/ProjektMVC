@@ -26,8 +26,40 @@ namespace WypasionaKsiegarniaMVC.Controllers
         }
         public ActionResult CartBin()
         {
+
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
+
+            if (Session["cartbin"] == null)
+            {
+                List<CartItem> cartbin = new List<CartItem>();
+                foreach (CartItem c in cart)
+                { cartbin.Add(c); }
+                Session["cartbin"] = cartbin;
+
+            }
+            else
+            {
+                List<CartItem> cartbin = (List<CartItem>)Session["cartbin"];
+ 
+            }
+         
             return View("CartBin");
+
         }
+
+        //public ActionResult ToPdf(int id, PdfCreator.InvoiceType invoiceType)
+      //  {
+           /* Invoice invoice = _invoiceRepository.GetById(id); // _invoiceRepository - prywatne repozytorium faktur
+            string path = Server.MapPath("~/bin/lastInvoice.pdf"); // po stronie serwera, faktura zapisywana jest do pliku lastInvoice.pdf (być może nie jest to ostateczne rozwiązanie)
+            string fileName = invoice.CreationDate.Value.ToShortDateString() + "_" + invoice.Customer.CompanyName + ".pdf"; // nazwa pliku otrzymywanego przez użytkownika jest postaci dataWystawienia_nazwaFirmyKlienckiej.pdf
+
+            PdfCreator pdfCreator = new PdfCreator(invoice); // klasa PdfCreator tworzy dokument PDF na podstawie encji faktury z bazy danych
+            pdfCreator.Create(invoiceType);
+            pdfCreator.SaveDocument(path, false);
+            */
+          //  return File(path, "PDF|*.pdf", fileName); // zwrócenie pliku PDF
+            
+        //}
 
 
         private int isExisting(int id)

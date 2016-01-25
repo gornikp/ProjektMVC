@@ -120,7 +120,7 @@
             @Html.ActionLink("Details", "Details", new { id = item.ProductID },new {  @class = "btn btn-warning" })
             
             
-            @*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
                 @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-danger" })  
             }
@@ -128,7 +128,7 @@
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
                 @Html.ActionLink("Delete", "Delete", new { id=item.ProductID },new { @class = "btn btn-primary" })
-            }*@
+            }
             
           
 
