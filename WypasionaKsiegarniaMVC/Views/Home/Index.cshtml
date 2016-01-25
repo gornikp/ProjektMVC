@@ -7,6 +7,16 @@
 </div>
 
 <div class="row">
+
+    <div class="input-group input-group-sm">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                Find: @Html.TextBox("SearchString")
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+
     <h2>@ViewBag.Title</h2>
     <table cellpadding="8" cellspacing="10" class="table">
 
@@ -44,6 +54,10 @@
                <th>
                    <button type="submit" class="btn btn-danger">Add</button>
                </th>}*@
+
+
+
+
 
 
     </tr>

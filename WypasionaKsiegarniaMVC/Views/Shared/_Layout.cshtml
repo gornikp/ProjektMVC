@@ -8,9 +8,14 @@
     @Scripts.Render("~/bundles/modernizr")
 
     <link href="~/Content/@MvcApplication.theme" rel="stylesheet" />
+ 
+
 
 </head>
 <body>
+    </ul>
+
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -95,14 +100,7 @@
                     }
 
                 </ul>
-                <div class="input-group input-group-sm">
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            Find: @Html.TextBox("SearchString")
-                        </div>
-                        <button type="submit" class="btn btn-success">Submit</button>
-                    </form>
-                </div>
+             
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
