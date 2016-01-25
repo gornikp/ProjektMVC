@@ -70,6 +70,14 @@
 
 
                 </ul>
+                <div class="input-group input-group-sm">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -91,7 +99,7 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-                <br /><p>Owiedziny: @ApplicationInstance.Application["SiteVisitedCounter"]</p>
+                <br /><p>Visited: @ApplicationInstance.Application["SiteVisitedCounter"]</p>
                 @*<p>online: @ApplicationInstance.Application["OnlineUserCounter"]</p>*@
             </div>
             
