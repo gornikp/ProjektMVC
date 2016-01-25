@@ -21,7 +21,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         public ActionResult Index(String searchString)
         {
 
-            ViewBag.listProducts = db.Products.Where(x => x.Featured == true).ToList();
+            ViewBag.listProducts = db.Products.Where(x => x.Featured == true).Where(x=>x.Hidden == false).ToList();
             ViewBag.Title = "Featured";
 
             if (!String.IsNullOrEmpty(searchString))
