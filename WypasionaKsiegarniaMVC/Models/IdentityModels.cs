@@ -52,6 +52,11 @@ namespace WypasionaKsiegarniaMVC.Models
         {
             return new ApplicationDbContext();
         }
+
+        internal object ToList()
+        {
+            throw new NotImplementedException();
+        }
     }
     public class IdentityManager 
     {
