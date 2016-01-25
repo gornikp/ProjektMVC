@@ -20,6 +20,8 @@ namespace WypasionaKsiegarniaMVC.Controllers
         {
             var products = db.Products.Include(p => p.Category).Include(p => p.Authors).Where(p => p.Hidden == false);
             ViewBag.Images = new SelectList(db.Pictures, "PictureID", "ProductID");
+
+
             return View(await products.ToListAsync());
         }
         [Authorize(Roles = "Admin")]

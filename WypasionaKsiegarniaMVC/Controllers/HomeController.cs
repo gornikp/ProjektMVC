@@ -18,11 +18,20 @@ namespace WypasionaKsiegarniaMVC.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(String searchString)
         {
 
             ViewBag.listProducts = db.Products.Where(x => x.Featured == true).ToList();
+            ViewBag.Title = "Featured";
 
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var products = db.Products.Include(p => p.Category).Include(p => p.Authors).Where(p => p.Hidden == false);
+                products = products.Where(i => i.Title.Contains(searchString) || i.Publisher.Contains(searchString)
+                     || i.Language.Contains(searchString));
+                ViewBag.listProducts = products;
+                ViewBag.Title = "Found";
+            }
             return View();
         }
 
