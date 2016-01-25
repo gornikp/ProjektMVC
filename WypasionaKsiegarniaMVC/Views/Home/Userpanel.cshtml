@@ -16,7 +16,7 @@
     </head>
 
     <body>
-        @*@foreach (Order o in ViewBag.order)
+        @foreach (Order o in ViewBag.order)
              {
             <table cellpadding="8" cellspacing="10" class="table">
             <tr>
@@ -24,42 +24,30 @@
             <th>Title </th>
             <th>Quantity</th>
             <th>data</th>
-            <th>status</th>
+            <th>status  @o.status</th>
             <th></th>
              </tr>
             @foreach (CartItem p in o.Cart.CartItems)
             {
             <tr>
                 <th> @o.CartID</th>
-                <th> @Html.DisplayFor(m => p.Product.Title)</th>
+                <th> @p.Product.Title</th>
                 <th> @p.Quantity </th>
-                <th> @p.DateCreated</th>
-                <th> @o.status</th>
+                <th> @p.DateCreated</th>            
+                </tr>               
+            }
+                <tr><th></th><th></th><th></th><th>
+    @using (Html.BeginForm("OrderAgain", "ShoppingCart", FormMethod.Post))
+                {
+                
+                    @Html.Hidden("id2", o.CartID)
+                
+                
+                    <button type="submit" class="btn btn-danger">Add</button>
+    }</th>
                 </tr>
-                 }
                 </table>
-                 }*@
-<table>
-@*@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cart)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-@foreach (var item2 in item.Cart)
-{
-        <td>
-            @Html.DisplayFor(modelItem2 => item2.User.UserName)
-        </td>
-}
-    </tr>
-}</table>*@
+                 }
 
         <script>
         </script>

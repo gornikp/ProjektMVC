@@ -23,15 +23,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+               
                     <li>@Html.ActionLink("News & Discounts", "Featured", "Products")</li>
+                 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Manage users</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li><a href="/ApplicationUsers/">Manage users</a></li>
+                            <li><a href="/Pictures/">Zdięcia</a></li>
+                            <li><a href="/Files/">Pliki</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="/AdminPanel/">ELO</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">One more separated link</a></li>
                         </ul>
@@ -39,11 +41,11 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Books<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/Products/">Manage books</a></li>
+                            <li><a href="/Products/List">Manage books</a></li>
                             <li><a href="/Products/Create">Add new book</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li><a href="/Products/">Edycja produktów</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="/Home/Userpanel">Separated link</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">One more separated link</a></li>
                         </ul>
@@ -71,6 +73,11 @@
                         </ul>
                     </li>
 
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) {
+
+                        <li>@Html.ActionLink("My Account", "Index", "ApplicationUsers")</li>
+                  
+                    }
 
 
                 </ul>

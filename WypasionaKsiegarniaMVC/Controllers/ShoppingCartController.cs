@@ -137,8 +137,6 @@ namespace WypasionaKsiegarniaMVC.Controllers
 
         public ActionResult MakeAnOrder(Address adres)
         {
-
-
             List<CartItem> cart = (List<CartItem>)Session["cart"];
 
             Cart koszyk = new Cart();
@@ -174,6 +172,38 @@ namespace WypasionaKsiegarniaMVC.Controllers
 
 
             return View("CartBin");
+        }
+
+
+
+        public ActionResult OrderAgain(int id2)
+        {
+            var itemki = db.Cart.Where(o => o.CartID == id2).FirstOrDefault();
+            if (Session["cart"] == null)
+            {
+
+                List<CartItem> cart = new List<CartItem>();
+                foreach (CartItem item in itemki.CartItems)
+                {
+                    cart.Add(item);
+                }
+                Session["cart"] = cart;             
+            }
+            else
+            {
+                List<CartItem> cart = (List<CartItem>)Session["cart"];
+                foreach (var item in itemki.CartItems)
+                {
+                    int index = isExisting(item.ProductID);
+                    if (index == -1)
+                        cart.Add(new CartItem(db.Products.Find(item.ProductID), item.Quantity));
+                    else
+                        cart[index].Quantity += item.Quantity;
+                }
+                Session["cart"] = cart;
+                Session["licz"] = cart.Count;
+            }
+            return View("Cart");
         }
     }
 }
