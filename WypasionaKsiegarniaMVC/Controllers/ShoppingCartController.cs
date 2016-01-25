@@ -24,7 +24,30 @@ namespace WypasionaKsiegarniaMVC.Controllers
         }
         public ActionResult CartBin()
         {
+
+           // int index = isExisting(id);
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
+
+            if (Session["cartbin"] == null)
+            {
+
+                List<CartItem> cartbin = new List<CartItem>();
+                foreach (CartItem c in cart)
+                { cartbin.Add(c); }
+                Session["cartbin"] = cartbin;
+
+            }
+            else
+            {
+                List<CartItem> cartbin = (List<CartItem>)Session["cartbin"];
+              
+                //Session["cartbin"] = cartbin;
+            }
+         
             return View("CartBin");
+
+
+
         }
 
 
