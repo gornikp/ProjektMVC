@@ -159,5 +159,35 @@ namespace WypasionaKsiegarniaMVC.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Find(string id)
+        {
+            string[] elo = id.Split(' ');
+            List<string> ale = elo.ToList();
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+           
+            //List<Product> lista = new List<Product>();
+
+            //foreach (string item in ale)
+            //{
+            //    var product = db.Products.Where(o => o.Authors.);
+            //    if (product != null)
+            //    {
+            //        lista.Add(product);
+            //    }
+            //}
+ 
+
+
+            //if (product == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            return View();
+        }
     }
 }

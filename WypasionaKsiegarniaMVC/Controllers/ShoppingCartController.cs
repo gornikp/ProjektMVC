@@ -146,7 +146,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
                 if (e != null)
                 {
                     e.StockAmount -= item.Quantity;                
-                        //db.SaveChanges();
+                        db.SaveChanges();
                 }
             }
             

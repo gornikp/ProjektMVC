@@ -75,10 +75,9 @@
 
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) {
 
-                        <li>@Html.ActionLink("My Account", "Index", "ApplicationUsers")</li>
+                        <li>@Html.ActionLink("My Account", "Home", "Userpanel")</li>
                   
                     }
-
 
                 </ul>
                 @Html.Partial("_LoginPartial")

@@ -8,6 +8,14 @@
 }
 
 <h2>Books</h2>
+                @using (Html.BeginForm("Find", "Products", FormMethod.Post))
+                {
+
+
+                        @Html.TextBox("id", null, new { type = "text", style = "width:280px", @Value = "zapytaj mnie" })
+
+                        <button type="submit" class="btn btn-danger">Add</button>
+                    }
 
 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) {
 
