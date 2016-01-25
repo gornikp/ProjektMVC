@@ -165,8 +165,8 @@ namespace WypasionaKsiegarniaMVC.Controllers
             zamowienie.userId = User.Identity.GetUserId();
             zamowienie.status = "Nowe";
             string user = User.Identity.GetUserId();
-             Address query = db.Adresses.Where(x => x.userId == user).FirstOrDefault<Address>();
-            zamowienie.Address = query;
+             //Address query = db.Adresses.Where(x => x.userId == user).FirstOrDefault<Address>();
+            zamowienie.AddressID = 1;
             db.Orders.Add(zamowienie);
             db.SaveChanges();
 
