@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WypasionaKsiegarniaMVC.Models
@@ -26,6 +27,9 @@ namespace WypasionaKsiegarniaMVC.Models
         }
         public CartItem()
         { }
-
+        public string GetString()
+        {
+            return Environment.NewLine + "Product: " + Product.GetString() + ", Quantity: " + this.Quantity;
+        }
     }
 }

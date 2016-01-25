@@ -12,6 +12,7 @@ namespace WypasionaKsiegarniaMVC.Models
         public string FromName { get; set; }
         [Required, Display(Name = "Your email"), EmailAddress]
         public string FromEmail { get; set; }
+        public string AboutProduct { get; set; }
         [Required]
         public string Message { get; set; }
     }

@@ -64,5 +64,10 @@ namespace WypasionaKsiegarniaMVC.Models
         public virtual ICollection<Picture> Pictures { get; set; }
         public virtual ICollection<File> Files { get; set; }
         public virtual ICollection<Author> Authors { get; set; }
+
+        public String GetString()
+        {
+            return "{ Title: " + this.Title + ", Price: " + this.Price +" }";
+        }
     }
 }
