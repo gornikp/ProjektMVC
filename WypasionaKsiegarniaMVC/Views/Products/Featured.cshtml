@@ -18,6 +18,8 @@
             <th> @Html.DisplayNameFor(model => model.PageAmount) </th>
             <th> @Html.DisplayNameFor(model => model.Format) </th>
             <th> @Html.DisplayNameFor(model => model.StockAmount) </th>
+            <th> Ilość</th>
+            <th>  </th>
         </tr>
 
         @foreach (var item in (IEnumerable<WypasionaKsiegarniaMVC.Models.Product>)ViewBag.News)
@@ -26,14 +28,20 @@
                 <td> @Html.DisplayFor(modelItem => item.ISBN) </td>
                 <td> @Html.DisplayFor(modelItem => item.Title) </td>
                 <td> @Html.DisplayFor(modelItem => item.Language) </td>
-                <td> @Html.DisplayFor(modelItem => item.Price) </td>
+                <td> @Html.DisplayFor(modelItem => item.Price) zł</td>
                 <td> @Html.DisplayFor(modelItem => item.Year) </td>
                 <td> @Html.DisplayFor(modelItem => item.Publisher) </td>
                 <td> @Html.DisplayFor(modelItem => item.PageAmount) </td>
                 <td> @Html.DisplayFor(modelItem => item.Format) </td>
                 <td> @Html.DisplayFor(modelItem => item.StockAmount) </td>
+                @using (Html.BeginForm("OrderNow", "ShoppingCart", FormMethod.Post))
+                {
+                <td>@Html.TextBox("quantity", null, new { type = "number", style = "width:35px", min = "0", @Value = "1" })
+                    @Html.Hidden("id", item.ProductID) </td>
+                <td><button type="submit" class="btn btn-danger">Add</button>  </td>}
             </tr>
-        }
+                    
+                }
     </table>
 </div>
 
@@ -51,6 +59,8 @@
             <th> @Html.DisplayNameFor(model => model.Format) </th>
             <th> @Html.DisplayNameFor(model => model.StockAmount) </th>
             <th> @Html.DisplayNameFor(model => model.Discount) </th>
+            <th> Ilość</th>
+            <th>  </th>
         </tr>
 
         @foreach (var item in (IEnumerable<WypasionaKsiegarniaMVC.Models.Product>)ViewBag.Discounts)
@@ -59,13 +69,20 @@
                 <td> @Html.DisplayFor(modelItem => item.ISBN) </td>
                 <td> @Html.DisplayFor(modelItem => item.Title) </td>
                 <td> @Html.DisplayFor(modelItem => item.Language) </td>
-                <td> @Html.DisplayFor(modelItem => item.Price) </td>
+                <td> @Html.DisplayFor(modelItem => item.Price) zł</td>
                 <td> @Html.DisplayFor(modelItem => item.Year) </td>
                 <td> @Html.DisplayFor(modelItem => item.Publisher) </td>
                 <td> @Html.DisplayFor(modelItem => item.PageAmount) </td>
                 <td> @Html.DisplayFor(modelItem => item.Format) </td>
                 <td> @Html.DisplayFor(modelItem => item.StockAmount) </td>
                 <td> @Html.DisplayFor(modelItem => item.Discount) </td>
+                @using (Html.BeginForm("OrderNow", "ShoppingCart", FormMethod.Post))
+                {
+                    <td>
+                        @Html.TextBox("quantity", null, new { type = "number", style = "width:35px", min = "0", @Value = "1" })
+                    @Html.Hidden("id", item.ProductID)
+                </td>
+                    <td><button type="submit" class="btn btn-danger">Add</button>  </td>}
             </tr>
         }
     </table>

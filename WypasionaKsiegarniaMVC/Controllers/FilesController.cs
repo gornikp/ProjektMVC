@@ -49,7 +49,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "FileID,Address,ProductID")] File file)
+        public async Task<ActionResult> Create([Bind(Include = "FileID,Address,Name,ProductID")] File file)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "FileID,Address,ProductID")] File file)
+        public async Task<ActionResult> Edit([Bind(Include = "FileID,Address,Name,ProductID")] File file)
         {
             if (ModelState.IsValid)
             {

@@ -137,9 +137,6 @@ namespace WypasionaKsiegarniaMVC.Controllers
 
         public ActionResult MakeAnOrder(Address adres)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-
-
             List<CartItem> cart = (List<CartItem>)Session["cart"];
 
             Cart koszyk = new Cart();
@@ -156,24 +153,57 @@ namespace WypasionaKsiegarniaMVC.Controllers
             foreach (CartItem item in cart)
             {
                 item.DateCreated = DateTime.Now;
-                db.CartItems.Add(item);
+                //db.CartItems.Add(item);
             }
             koszyk.CartItems = cart;
             koszyk.userId = User.Identity.GetUserId();
-            db.Cart.Add(koszyk);
+            //db.Cart.Add(koszyk);
             //db.SaveChanges();
             Order zamowienie = new Order();
 
             zamowienie.Cart = koszyk;
             zamowienie.userId = User.Identity.GetUserId();
             zamowienie.status = "Nowe";
-             Address query = db.Adresses.Where(x => x.userId == User.Identity.GetUserId()).FirstOrDefault<Address>();
+            string user = User.Identity.GetUserId();
+             Address query = db.Adresses.Where(x => x.userId == user).FirstOrDefault<Address>();
             zamowienie.Address = query;
             db.Orders.Add(zamowienie);
             db.SaveChanges();
 
 
             return View("CartBin");
+        }
+
+
+
+        public ActionResult OrderAgain(int id2)
+        {
+            var itemki = db.Cart.Where(o => o.CartID == id2).FirstOrDefault();
+            if (Session["cart"] == null)
+            {
+
+                List<CartItem> cart = new List<CartItem>();
+                foreach (CartItem item in itemki.CartItems)
+                {
+                    cart.Add(item);
+                }
+                Session["cart"] = cart;             
+            }
+            else
+            {
+                List<CartItem> cart = (List<CartItem>)Session["cart"];
+                foreach (var item in itemki.CartItems)
+                {
+                    int index = isExisting(item.ProductID);
+                    if (index == -1)
+                        cart.Add(new CartItem(db.Products.Find(item.ProductID), item.Quantity));
+                    else
+                        cart[index].Quantity += item.Quantity;
+                }
+                Session["cart"] = cart;
+                Session["licz"] = cart.Count;
+            }
+            return View("Cart");
         }
     }
 }

@@ -8,11 +8,14 @@
 
 <div>
     <h4>Product</h4>
+    <div class="col-md-10">
+        @foreach (var item in Model.Pictures)
+        {
+            <img src="@item.Address" alt="HTML% Icon" style="width:250px;height:250px" />
+        }
+    </div>
     <hr />
     <dl class="dl-horizontal">
-        <div class="col-md-10">
-            <img src="http://www.hodowanko.pl/application/assets/styles/common/images/piesel.png" alt="HTML% Icon" style="width:250px;height:250px" />
-        </div>
         <dt>
             @Html.DisplayNameFor(model => model.Category.Name)
         </dt>
@@ -118,14 +121,22 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Files)
+        </dt>
+        <dd>
+            @foreach (var elo in Model.Files)
+            {
+                <a href="@elo.Address">@elo.Name</a><br>         
+            }
+            
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
     </dl>
+    @{ var myHtmlString = (Html.DisplayFor(model => model.Description).ToString());}
+    @Html.Raw(HttpUtility.HtmlDecode(myHtmlString))
 </div>
 <p>
 
@@ -145,8 +156,12 @@
         {
             @Html.ActionLink("Delete", "Delete", new { id = Model.ProductID }, new { @class = "btn btn-primary" })
         }
+
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {     
+                      @Html.Hidden("stringu", Model.Description,new { type = "text" })
+
+        }
     
-          
-       
 
 </p>
