@@ -18,14 +18,14 @@ namespace WypasionaKsiegarniaMVC.Controllers
         // GET: Products
         public async Task<ActionResult> Index()
         {
-            var products = db.Products.Include(p => p.Category).Include(p=>p.Authors).Where(p=>p.Hidden==false);
+            var products = db.Products.Include(p => p.Category).Include(p => p.Authors).Where(p => p.Hidden == false);
             ViewBag.Images = new SelectList(db.Pictures, "PictureID", "ProductID");
             return View(await products.ToListAsync());
         }
         [Authorize(Roles = "Admin")]
         public ActionResult List()
         {
-            var products = db.Products.Include(p => p.Category).Include(p => p.Authors);
+            var products = db.Products.Include(p => p.Category).Include(p => p.Authors).Include(p => p.Pictures);
             return View(products.ToList());
         }
 
@@ -48,7 +48,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
-            ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "Name","NameSurname");
+            ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "Name", "NameSurname");
             return View();
         }
 
@@ -74,8 +74,8 @@ namespace WypasionaKsiegarniaMVC.Controllers
         public ActionResult Featured()
         {
             int maxId = db.Products.Max(i => i.ProductID);
-            IEnumerable <Product> news = (db.Products.ToList()).Where(i => i.ProductID > maxId - 6);
-            IEnumerable <Product> discounts = (db.Products.ToList()).Where(i => i.Featured = true & i.Discount < 1);
+            IEnumerable<Product> news = (db.Products.ToList()).Where(i => i.ProductID > maxId - 6);
+            IEnumerable<Product> discounts = (db.Products.ToList()).Where(i => i.Featured = true & i.Discount < 1);
             ViewBag.News = news;
             ViewBag.Discounts = discounts;
 
@@ -101,10 +101,10 @@ namespace WypasionaKsiegarniaMVC.Controllers
             }
 
             var allAuthorsList = db.Authors.ToList();
-            productAuthorViewModel.AllAuthorsList = allAuthorsList.Select(i => new SelectListItem { Text = i.Name + " " + i.NameSurname, Value=i.AuthorsID.ToString() });
+            productAuthorViewModel.AllAuthorsList = allAuthorsList.Select(i => new SelectListItem { Text = i.Name + " " + i.NameSurname, Value = i.AuthorsID.ToString() });
 
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", productAuthorViewModel.Product.CategoryID);
-            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorsId", "Name", "NameSurname",  productAuthorViewModel.Product.ProductID);
+            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorsId", "Name", "NameSurname", productAuthorViewModel.Product.ProductID);
             return View(productAuthorViewModel);
         }
 
@@ -169,7 +169,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-           
+
             //List<Product> lista = new List<Product>();
 
             //foreach (string item in ale)
@@ -180,7 +180,7 @@ namespace WypasionaKsiegarniaMVC.Controllers
             //        lista.Add(product);
             //    }
             //}
- 
+
 
 
             //if (product == null)
@@ -188,6 +188,10 @@ namespace WypasionaKsiegarniaMVC.Controllers
             //    return HttpNotFound();
             //}
             return View();
+        }
+        public string Gen(string stringu)
+        {
+            return stringu;
         }
     }
 }

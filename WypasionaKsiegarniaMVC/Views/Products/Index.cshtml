@@ -64,7 +64,10 @@
     <tr>
         <td>
             <div class="col-md-10">
-                <img src="http://www.hodowanko.pl/application/assets/styles/common/images/piesel.png" alt="HTML% Icon" style="width:110px;height:110px"/>
+                @if (item.Pictures.Count > 0)
+                {
+                <img src="@Html.DisplayFor(modelItem => item.Pictures.ElementAt(0).Address)" alt="HTML% Icon" style="width:110px;height:110px"/>
+                }
             </div>
         </td>
         @*<td>
@@ -117,7 +120,7 @@
             @Html.ActionLink("Details", "Details", new { id = item.ProductID },new {  @class = "btn btn-warning" })
             
             
-            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            @*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
                 @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-danger" })  
             }
@@ -125,7 +128,7 @@
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
                 @Html.ActionLink("Delete", "Delete", new { id=item.ProductID },new { @class = "btn btn-primary" })
-            }
+            }*@
             
           
 
